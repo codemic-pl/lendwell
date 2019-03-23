@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
-import ReduxThunk from 'redux-thunk';
-import configStore from './configs/store'
-import { PersistGate } from 'redux-persist/integration/react'
+import { PersistGate } from 'redux-persist/integration/react';
+import Router from './configs/Router';
+import configStore from './configs/store';
 
 class App extends Component {
   render() {
@@ -12,7 +10,7 @@ class App extends Component {
     return (
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <View />
+          <Router />
         </PersistGate>
       </Provider>
     );
