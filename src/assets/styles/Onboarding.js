@@ -8,13 +8,15 @@ export default StyleSheet.create({
     marginTop: 64,
     fontSize: 34,
     fontWeight: 'bold',
-    color: '#fff'
+    color: '#fff',
+    fontFamily: 'oxygen'
   },
   description: {
     marginTop: 16,
     fontSize: 15,
     lineHeight: 24,
-    color: '#fff'
+    color: '#fff',
+    fontFamily: 'oxygen'
   },
   slide: {
     paddingHorizontal: 74,

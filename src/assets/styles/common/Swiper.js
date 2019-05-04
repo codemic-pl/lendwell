@@ -65,6 +65,7 @@ export default StyleSheet.create({
   buttonFinishText: {
     lineHeight: 20,
     fontSize: 16,
+    fontFamily: 'oxygen',
     fontWeight: 'bold',
     color: ACCENT_COLOR,
     paddingTop: 15,
