@@ -2,9 +2,9 @@ import React from 'react';
 import { View } from 'react-native';
 import swiperPageStyle from '../../assets/styles/common/SwiperPage';
 
-const SwiperPage = ({ children }) => {
+const SwiperPage = ({ children, customStyle }) => {
   return (
-    <View style={[swiperPageStyle.slide]}>
+    <View style={[swiperPageStyle.slide, customStyle]}>
       {children}
     </View>
   );

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { ScrollView, View, Platform } from 'react-native';
 import swiperStyle from '../../assets/styles/common/Swiper';
-import { Button } from './';
+import { AppIcon, Button } from './';
 import { WINDOW_WIDTH, WINDOW_HEIGHT } from '../../assets/styles/common/Variables';
 
 const width = WINDOW_WIDTH;
@@ -221,7 +221,7 @@ class Swiper extends Component {
     return (
       <View
         pointerEvents="none"
-        style={[swiperStyle.pagination, swiperStyle.fullScreen]}
+        style={[swiperStyle.pagination]}
       >
         {dots}
       </View>
@@ -233,15 +233,23 @@ class Swiper extends Component {
    */
   renderButton = () => {
     const lastScreen = this.state.index === this.state.total - 1;
+    if (lastScreen) {
+      return (
+        <View pointerEvents="box-none" style={[swiperStyle.buttonWrapper]}>
+          <Button
+            text="Rozpocznij"
+            onPress={() => this.state.onLastSlide()}
+            buttonStyle={swiperStyle.buttonFinish}
+            textStyle={swiperStyle.buttonFinishText}
+          />
+        </View>
+      );
+    }
     return (
-      <View pointerEvents="box-none" style={[swiperStyle.buttonWrapper, swiperStyle.fullScreen]}>
-        {lastScreen
-          // Show this button on the last screen
-          // TODO: Add a handler that would send a user to your app after onboarding is complete
-          ? <Button text="Start Now" onPress={() => this.state.onLastSlide()} />
-          // Or this one otherwise
-          : <Button text="Continue" onPress={() => this.swipe()} />
-        }
+      <View pointerEvents="box-none" style={[swiperStyle.buttonWrapper]}>
+        <Button onPress={() => this.swipe()} buttonStyle={swiperStyle.buttonContinue}>
+          <AppIcon name="ArrowRight" width="20" height="20" fill="#FFFFFF" />
+        </Button>
       </View>
     );
   }
@@ -254,10 +262,12 @@ class Swiper extends Component {
       <View style={[swiperStyle.container, swiperStyle.fullScreen]}>
         {/* Render screens */}
         {this.renderScrollView(children)}
-        {/* Render pagination */}
-        {this.renderPagination()}
-        {/* Render Continue or Done button */}
-        {this.renderButton()}
+        <View style={[swiperStyle.footer]}>
+          {/* Render pagination */}
+          {this.renderPagination()}
+          {/* Render Continue or Done button */}
+          {this.renderButton()}
+        </View>
       </View>
     );
   }

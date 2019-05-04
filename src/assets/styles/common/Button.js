@@ -5,7 +5,6 @@ export default StyleSheet.create({
   text: {
     alignSelf: 'center',
     color: LIGHT_TEXT_COLOR,
-    fontFamily: 'NunitoSans-Bold',
     fontSize: 14,
     lineHeight: 21,
     paddingVertical: 12
