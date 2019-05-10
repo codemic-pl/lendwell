@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import lends from './Lends';
-import defaults from './Defaults';
+import Lends from './Lends';
+import Defaults from './Defaults';
 
 export default combineReducers({
-  lends,
-  defaults
+  lends: Lends,
+  defaults: Defaults
 });

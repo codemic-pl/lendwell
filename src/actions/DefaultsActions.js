@@ -1,6 +1,7 @@
-import { Actions } from 'react-native-router-flux';
+// import { Actions } from 'react-native-router-flux';
 import {
-  FIRST_APP_LAUNCH
+  FIRST_APP_LAUNCH,
+  SET_STATUSBAR_HEIGHT
 } from './types';
 
 export const endOnboarding = (dispatch) => {
@@ -10,4 +11,11 @@ export const endOnboarding = (dispatch) => {
   });
   //Actions.loginForm();?
   //Actions.home();?
+};
+
+export const setStatusBarHeight = (height) => {
+  return {
+    type: SET_STATUSBAR_HEIGHT,
+    payload: height
+  };
 };

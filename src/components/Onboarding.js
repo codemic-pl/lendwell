@@ -15,9 +15,10 @@ import onboardingStyles from '../assets/styles/Onboarding';
 class Onboarding extends Component {
   componentDidMount() {
     StatusBar.setHidden(false);
-    StatusBar.setBarStyle('light-content');
     if (Platform.OS === 'android') {
       StatusBar.setBackgroundColor('transparent');
+    } else {
+      StatusBar.setBarStyle('light-content');
     }
   }
   render() {

@@ -1,15 +1,23 @@
 import {
-  FIRST_APP_LAUNCH
+  FIRST_APP_LAUNCH,
+  SET_STATUSBAR_HEIGHT
 } from '../actions/types';
 
 const INITIAL_STATE = {
-  firstLaunch: true
+  firstLaunch: true,
+  statusBarHeight: 0
 };
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    case SET_STATUSBAR_HEIGHT:
+      return {
+        statusBarHeight: action.payload
+      };
     case FIRST_APP_LAUNCH:
-      return action.payload;
+      return {
+        firstLaunch: action.payload
+      };
     default:
       return state;
   }
