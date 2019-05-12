@@ -29,7 +29,11 @@ class Swiper extends Component {
     index: 0,
     // On last slide button click
     onLastSlide() {
-      console.log('Send me to app');
+      console.log('The end of swiper');
+    },
+    // On update index
+    onUpdateIndex(index) {
+      console.log(`Index Updated ${index}`);
     }
   };
 
@@ -97,7 +101,8 @@ class Swiper extends Component {
       offset,
       width,
       height,
-      onLastSlide: props.onLastSlide
+      onLastSlide: props.onLastSlide,
+      onUpdateIndex: props.onUpdateIndex
     };
 
     // Component internals as a class property,
@@ -108,6 +113,14 @@ class Swiper extends Component {
     };
 
     return state;
+  }
+
+  /**
+   * Get index from state
+   */
+  getIndex = () => {
+    const state = this.state;
+    return state.index || 0;
   }
 
   /**
@@ -135,19 +148,32 @@ class Swiper extends Component {
     this.setState({
       index
     });
+
+    state.onUpdateIndex(index);
   }
 
   /**
-   * Swipe one slide forward
+   * Swipe one slide forward/backward
    */
-  swipe = () => {
+  swipe = (back) => {
     // Ignore if already scrolling or if there is less than 2 slides
-    if (this.internals.isScrolling || this.state.total < 2) {
+    const lastScreen = this.state.index === this.state.total - 1;
+    const firstScreen = this.state.index === 0;
+    if (this.internals.isScrolling ||
+        this.state.total < 2 ||
+        (!back && lastScreen) ||
+        (back && firstScreen)) {
       return;
     }
 
+
     const state = this.state;
-    const diff = this.state.index + 1;
+    let diff = this.state.index;
+    if (back) {
+      diff--;
+    } else {
+      diff++;
+    }
     const x = diff * state.width;
     const y = 0;
 
@@ -254,6 +280,19 @@ class Swiper extends Component {
     );
   }
 
+  renderFooter = () => {
+    if (!this.props.disableDefaultUI) {
+      return (
+        <View style={[swiperStyle.footer]}>
+          {/* Render pagination */}
+          {this.renderPagination()}
+          {/* Render Continue or Done button */}
+          {this.renderButton()}
+        </View>
+      );
+    }
+  }
+
   /**
    * Render the component
    */
@@ -262,12 +301,7 @@ class Swiper extends Component {
       <View style={[swiperStyle.container, swiperStyle.fullScreen]}>
         {/* Render screens */}
         {this.renderScrollView(children)}
-        <View style={[swiperStyle.footer]}>
-          {/* Render pagination */}
-          {this.renderPagination()}
-          {/* Render Continue or Done button */}
-          {this.renderButton()}
-        </View>
+        {this.renderFooter()}
       </View>
     );
   }

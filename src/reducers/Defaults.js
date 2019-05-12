@@ -12,10 +12,12 @@ export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case SET_STATUSBAR_HEIGHT:
       return {
+        ...state,
         statusBarHeight: action.payload
       };
     case FIRST_APP_LAUNCH:
       return {
+        ...state,
         firstLaunch: action.payload
       };
     default:

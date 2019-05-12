@@ -8,11 +8,11 @@ import LinearGradient from 'react-native-linear-gradient';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
-import { AppIcon } from './';
+// import { AppIcon } from './';
 import { ACCENT_LINEAR_START, ACCENT_LINEAR_END } from '../../assets/styles/common/Variables';
 import navBarStyle from '../../assets/styles/common/NavBar';
 
-class NavBarr extends Component {
+class NavBarComponent extends Component {
   // constructor(props) {
   //     super(props);
   // }
@@ -42,6 +42,7 @@ class NavBarr extends Component {
     }
   }
   renderTitle() {
+    console.log(this.props.title);
     if (this.props.title) {
       return (
         <View style={[navBarStyle.titleHolder]}>
@@ -52,6 +53,7 @@ class NavBarr extends Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <LinearGradient
         colors={[ACCENT_LINEAR_START, ACCENT_LINEAR_END]}
@@ -64,9 +66,7 @@ class NavBarr extends Component {
           }
         ]}
       >
-        <View>
-          {this.renderTitle()}
-        </View>
+        {this.renderTitle()}
       </LinearGradient>
     );
   }
@@ -83,6 +83,6 @@ const mapStateToProps = state => {
   };
 };
 
-const NavBar = connect(mapStateToProps, actions)(NavBarr);
+const NavBar = connect(mapStateToProps, actions)(NavBarComponent);
 
 export { NavBar };
