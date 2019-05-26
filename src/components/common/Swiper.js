@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { ScrollView, View, Platform } from 'react-native';
-import swiperStyle from '../../assets/styles/common/Swiper';
+import componentStyles from '../../assets/styles/common/Swiper';
 import { AppIcon, Button } from './';
 import { WINDOW_WIDTH, WINDOW_HEIGHT } from '../../assets/styles/common/Variables';
 
@@ -85,6 +85,14 @@ class Swiper extends Component {
   }
 
   /**
+   * Get index from state
+   */
+  getIndex = () => {
+    const state = this.state;
+    return state.index || 0;
+  }
+
+  /**
    * Initialize the state
    */
   initState(props) {
@@ -113,14 +121,6 @@ class Swiper extends Component {
     };
 
     return state;
-  }
-
-  /**
-   * Get index from state
-   */
-  getIndex = () => {
-    const state = this.state;
-    return state.index || 0;
   }
 
   /**
@@ -207,14 +207,14 @@ class Swiper extends Component {
       <ScrollView
         ref={component => { this.scrollView = component; }}
         {...this.props}
-        contentContainerStyle={[swiperStyle.wrapper, this.props.style]}
+        contentContainerStyle={[componentStyles.wrapper, this.props.style]}
         onScrollBeginDrag={this.onScrollBegin}
         onMomentumScrollEnd={this.onScrollEnd}
         onScrollEndDrag={this.onScrollEndDrag}
       >
         {pages.map((page, i) =>
           // Render each slide inside a View
-          <View style={[swiperStyle.fullScreen, swiperStyle.slide]} key={i}>
+          <View style={[componentStyles.fullScreen, componentStyles.slide]} key={i}>
             {page}
           </View>
         )}
@@ -230,8 +230,8 @@ class Swiper extends Component {
       return null;
     }
 
-    const ActiveDot = <View style={[swiperStyle.dot, swiperStyle.activeDot]} />;
-    const Dot = <View style={swiperStyle.dot} />;
+    const ActiveDot = <View style={[componentStyles.dot, componentStyles.activeDot]} />;
+    const Dot = <View style={componentStyles.dot} />;
 
     const dots = [];
 
@@ -247,7 +247,7 @@ class Swiper extends Component {
     return (
       <View
         pointerEvents="none"
-        style={[swiperStyle.pagination]}
+        style={[componentStyles.pagination]}
       >
         {dots}
       </View>
@@ -261,19 +261,19 @@ class Swiper extends Component {
     const lastScreen = this.state.index === this.state.total - 1;
     if (lastScreen) {
       return (
-        <View pointerEvents="box-none" style={[swiperStyle.buttonWrapper]}>
+        <View pointerEvents="box-none" style={[componentStyles.buttonWrapper]}>
           <Button
             text="Rozpocznij"
             onPress={() => this.state.onLastSlide()}
-            buttonStyle={swiperStyle.buttonFinish}
-            textStyle={swiperStyle.buttonFinishText}
+            buttonStyle={componentStyles.buttonFinish}
+            textStyle={componentStyles.buttonFinishText}
           />
         </View>
       );
     }
     return (
-      <View pointerEvents="box-none" style={[swiperStyle.buttonWrapper]}>
-        <Button onPress={() => this.swipe()} buttonStyle={swiperStyle.buttonContinue}>
+      <View pointerEvents="box-none" style={[componentStyles.buttonWrapper]}>
+        <Button onPress={() => this.swipe()} buttonStyle={componentStyles.buttonContinue}>
           <AppIcon name="ArrowRight" width="20" height="20" fill="#FFFFFF" />
         </Button>
       </View>
@@ -283,7 +283,7 @@ class Swiper extends Component {
   renderFooter = () => {
     if (!this.props.disableDefaultUI) {
       return (
-        <View style={[swiperStyle.footer]}>
+        <View style={[componentStyles.footer]}>
           {/* Render pagination */}
           {this.renderPagination()}
           {/* Render Continue or Done button */}
@@ -298,7 +298,7 @@ class Swiper extends Component {
    */
   render = ({ children } = this.props) => {
     return (
-      <View style={[swiperStyle.container, swiperStyle.fullScreen]}>
+      <View style={[componentStyles.container, componentStyles.fullScreen]}>
         {/* Render screens */}
         {this.renderScrollView(children)}
         {this.renderFooter()}

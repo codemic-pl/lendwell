@@ -2,6 +2,10 @@ import { StyleSheet } from 'react-native';
 import { GRAY_COLOR, ACCENT_COLOR } from './common/Variables';
 
 export default StyleSheet.create({
+  container: {
+    backgroundColor: '#FFFFFF',
+    flex: 1
+  },
   swiperButtons: {
     padding: 8,
     borderRadius: 8,

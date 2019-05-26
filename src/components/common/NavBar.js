@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../actions';
 // import { AppIcon } from './';
 import { ACCENT_LINEAR_START, ACCENT_LINEAR_END } from '../../assets/styles/common/Variables';
-import navBarStyle from '../../assets/styles/common/NavBar';
+import componentStyles from '../../assets/styles/common/NavBar';
 
 class NavBarComponent extends Component {
   // constructor(props) {
@@ -22,7 +22,7 @@ class NavBarComponent extends Component {
   renderBackButton() {
     if (this.props.backButton) {
       return (
-        <TouchableOpacity style={[navBarStyle.leftButton]}>
+        <TouchableOpacity style={[componentStyles.leftButton]}>
           <View>
             <Text> left button </Text>
           </View>
@@ -33,7 +33,7 @@ class NavBarComponent extends Component {
   renderLeftButton() {
     if (this.props.leftButton) {
       return (
-        <TouchableOpacity style={[navBarStyle.leftButton]}>
+        <TouchableOpacity style={[componentStyles.leftButton]}>
           <View>
             {this.props.leftButton}
           </View>
@@ -45,8 +45,8 @@ class NavBarComponent extends Component {
     console.log(this.props.title);
     if (this.props.title) {
       return (
-        <View style={[navBarStyle.titleHolder]}>
-          <Text style={[navBarStyle.title]}>{this.props.title || ''}</Text>
+        <View style={[componentStyles.titleHolder]}>
+          <Text style={[componentStyles.title]}>{this.props.title || ''}</Text>
         </View>
       );
     }
@@ -58,8 +58,8 @@ class NavBarComponent extends Component {
       <LinearGradient
         colors={[ACCENT_LINEAR_START, ACCENT_LINEAR_END]}
         style={[
-          navBarStyle.gradient,
-          navBarStyle.navBar,
+          componentStyles.gradient,
+          componentStyles.navBar,
           {
             paddingTop: this.props.statusBarHeight,
             paddingBottom: this.props.paddingBottom || 0 // padding e.g. for tabs

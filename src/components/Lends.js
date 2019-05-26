@@ -1,20 +1,29 @@
 import React, { Component } from 'react';
 import {
   Text,
-  ScrollView,
   TouchableOpacity,
   View
 } from 'react-native';
 import { connect } from 'react-redux';
-import { NavBar, Swiper, SwiperPage } from './common';
+import { NavBar, Swiper, SwiperPage, LendsList } from './common';
 import * as actions from '../actions';
-import lendsStyles from '../assets/styles/Lends';
+import componentStyles from '../assets/styles/Lends';
 
 class Lends extends Component {
   onChangeList = (index) => {
     console.log(this.props);
     this.props.setLendsSwiperUpdateIndex(index);
     // this.internals.swiperIndex = index;
+  }
+
+  getActiveLends = () => {
+    const lends = this.props.lends || [];
+    return lends.filter((lend) => lend.status === 'active');
+  }
+
+  getCompletedLends = () => {
+    const lends = this.props.lends || [];
+    return lends.filter((lend) => lend.status === 'completed');
   }
 
   scrollToCompletedLends = () => {
@@ -31,36 +40,38 @@ class Lends extends Component {
 
   render() {
     return (
-      <View style={{ flex: 1 }}>
+      <View
+        style={[componentStyles.container]}
+      >
         <NavBar
           paddingBottom={38}
           title="Twoje pożyczki"
         />
         <View
-          style={[lendsStyles.swiperButtons]}
+          style={[componentStyles.swiperButtons]}
         >
           <TouchableOpacity
             onPress={this.scrollToActiveLends}
-            style={[lendsStyles.swiperButton]}
+            style={[componentStyles.swiperButton]}
           >
             <Text
               style={[
-                lendsStyles.swiperButtonText,
-                (this.props.swiperIndex === 0 ? lendsStyles.swiperButtonActive : {})
+                componentStyles.swiperButtonText,
+                (this.props.swiperIndex === 0 ? componentStyles.swiperButtonActive : {})
               ]}
             >
               Aktywne
             </Text>
           </TouchableOpacity>
-          <View style={lendsStyles.swiperButtonSeparator} />
+          <View style={componentStyles.swiperButtonSeparator} />
           <TouchableOpacity
             onPress={this.scrollToCompletedLends}
-            style={[lendsStyles.swiperButton]}
+            style={[componentStyles.swiperButton]}
           >
             <Text
               style={[
-                lendsStyles.swiperButtonText,
-                (this.props.swiperIndex === 1 ? lendsStyles.swiperButtonActive : {})
+                componentStyles.swiperButtonText,
+                (this.props.swiperIndex === 1 ? componentStyles.swiperButtonActive : {})
               ]}
             >
               Oddane
@@ -73,14 +84,18 @@ class Lends extends Component {
           ref="lendsSwiper"
         >
           <SwiperPage>
-            <TouchableOpacity onPress={this.onPress}>
-              <Text>Lends1</Text>
-            </TouchableOpacity>
+            <LendsList
+              lends={this.getActiveLends()}
+              lendsType="active"
+              noItemsText="Brak aktywnych pożyczek"
+            />
           </SwiperPage>
           <SwiperPage>
-            <TouchableOpacity onPress={this.onPressBack}>
-              <Text>Lends2</Text>
-            </TouchableOpacity>
+            <LendsList
+              lends={this.getCompletedLends()}
+              lendsType="completed"
+              noItemsText="Brak zakończonych pożyczek"
+            />
           </SwiperPage>
         </Swiper>
       </View>
@@ -94,12 +109,14 @@ const mapStateToProps = state => {
   } = state.defaults;
 
   const {
-    swiperIndex
+    swiperIndex,
+    lends
   } = state.lends;
 
   return {
     firstLaunch,
-    swiperIndex
+    swiperIndex,
+    lends
   };
 };
 

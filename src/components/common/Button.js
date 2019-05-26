@@ -1,12 +1,12 @@
 import React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
-import buttonStyles from '../../assets/styles/common/Button';
+import componentStyles from '../../assets/styles/common/Button';
 
 const Button = ({ onPress, children, buttonStyle, textStyle, text }) => {
   const renderChildren = () => {
     if (text) {
       return (
-        <Text style={[buttonStyles.text, textStyle]}>
+        <Text style={[componentStyles.text, textStyle]}>
         {text}
         </Text>
       );
@@ -16,7 +16,7 @@ const Button = ({ onPress, children, buttonStyle, textStyle, text }) => {
     );
   };
   return (
-    <TouchableOpacity onPress={onPress} style={[buttonStyles.button, buttonStyle]}>
+    <TouchableOpacity onPress={onPress} style={[componentStyles.button, buttonStyle]}>
       {renderChildren()}
     </TouchableOpacity>
   );
