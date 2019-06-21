@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { connect } from 'react-redux';
+import { Actions } from 'react-native-router-flux';
 import * as actions from '../actions';
 import { AppIcon, Swiper, SwiperPage } from './common';
 import { ACCENT_LINEAR_START, ACCENT_LINEAR_END } from '../assets/styles/common/Variables';
@@ -23,7 +24,7 @@ class Onboarding extends Component {
   }
   render() {
     const closeOnboarding = function () {
-      console.log('Close');
+      Actions.lends();
     };
     return (
       <LinearGradient

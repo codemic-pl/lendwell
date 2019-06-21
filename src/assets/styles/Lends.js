@@ -14,7 +14,14 @@ export default StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#FFFFFF',
     marginHorizontal: 15,
-    marginTop: -32
+    marginTop: -32,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 4
+    },
+    shadowOpacity: 0.13,
+    shadowRadius: 8
   },
   swiperButton: {
     flex: 1,

@@ -1,3 +1,4 @@
+import short from 'short-uuid';
 import { SET_LENDS_SWIPER_INDEX } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -5,24 +6,27 @@ const INITIAL_STATE = {
   lends: [
     {
       status: 'active',
-      name: 'Wkrętarka',
-      person: 'Jan Kowalski',
+      id: short.generate(),
+      name: 'Przedłużacz samochodowy',
+      person: 'Zbigniew Szymański',
       lendDate: new Date(),
-      returnDate: new Date('2019-12-12')
+      returnDate: new Date('2019-07-20')
+    },
+    {
+      status: 'active',
+      id: short.generate(),
+      name: 'Ładowarka samochodowa do telefonu OnePlus 3T Pro Majster Tiger',
+      person: 'Mieczysław Schwichtenberg',
+      lendDate: new Date(),
+      returnDate: new Date('2019-07-20')
     },
     {
       status: 'completed',
-      name: 'Wkrętarka2',
-      person: 'Jan Kowalski',
+      id: short.generate(),
+      name: 'Wyrzynarka',
+      person: 'Bartek Kreft',
       lendDate: new Date(),
-      returnDate: new Date('2019-10-10')
-    },
-    {
-      status: 'completed',
-      name: 'Wkrętarka3',
-      person: 'Jan Kowalski',
-      lendDate: new Date(),
-      returnDate: new Date('2019-11-11')
+      returnDate: new Date('2019-07-18')
     }
   ]
 };

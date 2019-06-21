@@ -29,12 +29,12 @@ const RouterComponent = () => {
           initial
         >
           <Scene
-            key="Lends"
+            key="lends"
             component={Lends}
             hideNavBar
           />
           <Scene
-            key="Settings"
+            key="setings"
             component={Onboarding}
             title="Settings"
           />
