@@ -7,8 +7,9 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
 import { connect } from 'react-redux';
+import { Actions } from 'react-native-router-flux';
 import * as actions from '../../actions';
-// import { AppIcon } from './';
+import { AppIcon } from './';
 import { ACCENT_LINEAR_START, ACCENT_LINEAR_END } from '../../assets/styles/common/Variables';
 import componentStyles from '../../assets/styles/common/NavBar';
 
@@ -16,15 +17,59 @@ class NavBarComponent extends Component {
   // constructor(props) {
   //     super(props);
   // }
+  /*
+    props:
+    - backButton: bool
+    - backButtonOnPress: function
+    - backButtonContainerStyle: styles
+    - leftButton: component
+    - leftButtonOnPress: function
+    - leftButtonContainerStyle: styles
+    - rightButton: component
+    - rightButtonOnPress: function
+    - rightButtonContainerStyle: styles
+    - title: string
+    - paddingBottom: Number
+  */
   componentWillMount() {
     this.props.setStatusBarHeight(getStatusBarHeight());
   }
+  onLeftButtonPress() {
+    if (this.props && typeof (this.props.leftButtonOnPress) === 'function') {
+      this.props.leftButtonOnPress();
+    }
+  }
+  onBackButtonPress() {
+    if (this.props && typeof (this.props.backButtonOnPress) === 'function') {
+      this.props.backButtonOnPress();
+    } else {
+      Actions.pop();
+    }
+  }
+  onRightButtonPress() {
+    if (this.props && typeof (this.props.rightButtonOnPress) === 'function') {
+      this.props.rightButtonOnPress();
+    }
+  }
+
   renderBackButton() {
     if (this.props.backButton) {
       return (
-        <TouchableOpacity style={[componentStyles.leftButton]}>
+        <TouchableOpacity
+          style={[
+            componentStyles.button,
+            componentStyles.leftButton,
+            this.props.backButtonContainerStyle
+          ]}
+          onPress={this.onBackButtonPress}
+        >
           <View>
-            <Text> left button </Text>
+            <AppIcon
+              name="ArrowLeft"
+              width="16"
+              height="13"
+              fill="#FFFFFF"
+            />
           </View>
         </TouchableOpacity>
       );
@@ -33,32 +78,53 @@ class NavBarComponent extends Component {
   renderLeftButton() {
     if (this.props.leftButton) {
       return (
-        <TouchableOpacity style={[componentStyles.leftButton]}>
+        <TouchableOpacity
+          style={[
+            componentStyles.button,
+            componentStyles.leftButton,
+            this.props.leftButtonContainerStyle
+          ]}
+          onPress={this.onLeftButtonPress}
+        >
           <View>
             {this.props.leftButton}
           </View>
         </TouchableOpacity>
       );
     }
+    return this.renderBackButton();
+  }
+  renderRightButton() {
+    if (this.props.rightButton) {
+      return (
+        <TouchableOpacity
+          style={[
+            componentStyles.button,
+            componentStyles.rightButton,
+            this.props.rightButtonContainerStyle
+          ]}
+          onPress={this.onRightButtonPress}
+        >
+          <View>
+            {this.props.rightButton}
+          </View>
+        </TouchableOpacity>
+      );
+    }
   }
   renderTitle() {
-    console.log(this.props.title);
     if (this.props.title) {
       return (
-        <View style={[componentStyles.titleHolder]}>
-          <Text style={[componentStyles.title]}>{this.props.title || ''}</Text>
-        </View>
+        <Text style={[componentStyles.title]}>{this.props.title || ''}</Text>
       );
     }
   }
 
   render() {
-    console.log(this.props);
     return (
       <LinearGradient
         colors={[ACCENT_LINEAR_START, ACCENT_LINEAR_END]}
         style={[
-          componentStyles.gradient,
           componentStyles.navBar,
           {
             paddingTop: this.props.statusBarHeight,
@@ -66,7 +132,11 @@ class NavBarComponent extends Component {
           }
         ]}
       >
-        {this.renderTitle()}
+        <View style={[componentStyles.navBarContainer]}>
+          {this.renderLeftButton()}
+          {this.renderTitle()}
+          {this.renderRightButton()}
+        </View>
       </LinearGradient>
     );
   }

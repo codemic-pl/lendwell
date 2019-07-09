@@ -6,10 +6,11 @@ export default StyleSheet.create({
     width: WINDOW_WIDTH,
     flexDirection: 'row'
   },
-  titleHolder: {
+  navBarContainer: {
     padding: 24,
     alignItems: 'center',
     justifyContent: 'center',
+    flexDirection: 'row',
     flex: 1
   },
   title: {
@@ -18,10 +19,17 @@ export default StyleSheet.create({
     position: 'relative',
     fontSize: 16
   },
-  slide: {
-    flex: 1,
+  button: {
+    width: 45,
+    height: 45,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'transparent'
+    position: 'absolute',
   },
+  leftButton: {
+    left: 0
+  },
+  rightButton: {
+    right: 0
+  }
 });

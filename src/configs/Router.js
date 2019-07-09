@@ -2,6 +2,7 @@ import React from 'react';
 import { Scene, Stack, Router } from 'react-native-router-flux';
 import Onboarding from '../components/Onboarding';
 import Lends from '../components/Lends';
+import LendView from '../components/LendView';
 import { NavBar } from '../components/common/';
 
 const RouterComponent = () => {
@@ -40,6 +41,11 @@ const RouterComponent = () => {
             title="Ustawienia"
           />
         </Scene>
+        <Scene
+          key="lend"
+          path="/lend/:id/"
+          component={LendView}
+        />
       </Stack>
     </Router>
   );
