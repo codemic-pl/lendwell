@@ -32,11 +32,12 @@ const RouterComponent = () => {
             key="lends"
             component={Lends}
             hideNavBar
+            title="Pożyczki"
           />
           <Scene
-            key="setings"
+            key="settings"
             component={Onboarding}
-            title="Settings"
+            title="Ustawienia"
           />
         </Scene>
       </Stack>

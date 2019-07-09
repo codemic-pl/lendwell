@@ -4,7 +4,8 @@ import {
   ACTIVE_LEND_COLOR,
   TEXT_COLOR,
   LIGHT_GRAY_COLOR,
-  VERY_LIGHT_GRAY_COLOR
+  VERY_LIGHT_GRAY_COLOR,
+  NEGATIVE_COLOR
 } from './Variables';
 
 export default StyleSheet.create({
@@ -43,6 +44,7 @@ export default StyleSheet.create({
   },
   detailText: {
     fontSize: 11,
+    minWidth: 38,
     paddingLeft: 8,
     fontFamily: 'oxygen',
     color: LIGHT_GRAY_COLOR
@@ -52,5 +54,11 @@ export default StyleSheet.create({
     fontSize: 15,
     fontFamily: 'oxygen',
     color: TEXT_COLOR
+  },
+  textPositive: {
+    color: ACCENT_DARK_COLOR
+  },
+  textNegative: {
+    color: NEGATIVE_COLOR
   }
 });

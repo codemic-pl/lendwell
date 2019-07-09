@@ -1,5 +1,6 @@
 import React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import { AppIcon } from './';
 import componentStyles from '../../assets/styles/common/LendsListItem';
 import {
@@ -10,13 +11,82 @@ import {
 
 const LendsListItem = ({ lend, type }) => {
   const lendsType = (type === 'completed' ? ACCENT_VERY_DARK_COLOR : ACTIVE_LEND_DARK_COLOR);
-  const formatDate = (date) => new Date(date).toLocaleDateString('pl-PL');
-  const returnIn = (lendDate, returnDate) =>
-    Math.round((new Date(returnDate) - new Date(lendDate)) / (1000 * 60 * 60 * 24));
+  const formatDate = (someDate) => {
+    const date = someDate || new Date();
+    return new Date(date).toLocaleDateString('pl-PL');
+  };
+
+  const getDateYMD = (someDate) => {
+    const date = someDate || new Date();
+    return `${new Date(date).getFullYear()}-
+            ${new Date(date).getMonth() + 1}-
+            ${new Date(date).getDate()}`;
+  };
+
+  const isToday = (someDate) => {
+    if (!someDate) {
+      return;
+    }
+    const today = new Date();
+    const date = new Date(someDate);
+    return date.getDate() === today.getDate() &&
+      date.getMonth() === today.getMonth() &&
+      date.getFullYear() === today.getFullYear();
+  };
+
+  const returnIn = (deadlineDate, returnDate) => {
+    if (isToday(deadlineDate)) {
+      return 0;
+    }
+    let daysCount = ((new Date(deadlineDate) - new Date(getDateYMD(returnDate))) /
+                    (1000 * 60 * 60 * 24));
+    if (daysCount < 0) {
+      daysCount = Math.floor(daysCount * -1) * -1;
+    } else {
+      daysCount = Math.floor(daysCount);
+    }
+    return daysCount;
+  };
+
+  const onSelectLend = () => {
+    if (!lend.id) {
+      console.log('No Lend ID! Do nothing!');
+      return false;
+    }
+    console.log('go go go');
+    Actions.lend({ id: lend.id });
+  };
+
+  const renderReturnInDays = (deadlineDate, returnDate) => {
+    if (type === 'completed') {
+      return (
+        <Text
+          style={[
+            componentStyles.detailText,
+            (returnIn(deadlineDate, returnDate) < 0 ? componentStyles.textNegative : null)
+          ]}
+        >
+          {returnIn(deadlineDate, returnDate)} dni
+        </Text>
+      );
+    }
+    return (
+      <Text
+        style={[
+          componentStyles.detailText,
+          (returnIn(deadlineDate) === 0 ? componentStyles.textPositive : null),
+          (returnIn(deadlineDate) < 0 ? componentStyles.textNegative : null)
+        ]}
+      >
+        {returnIn(deadlineDate) === 0 ? 'dzisiaj' : `${returnIn(deadlineDate)} dni`}
+      </Text>
+    );
+  };
 
   return (
     <TouchableOpacity
       style={[componentStyles.container]}
+      onPress={onSelectLend}
     >
       <View
         style={[
@@ -40,7 +110,7 @@ const LendsListItem = ({ lend, type }) => {
               height="16"
               fill={LIGHT_GRAY_COLOR}
             />
-            <Text style={[componentStyles.detailText]}>{formatDate(lend.lendDate)}</Text>
+            <Text style={[componentStyles.detailText]}>{formatDate(lend.createdDate)}</Text>
           </View>
           <View style={[componentStyles.detail]}>
             <AppIcon
@@ -49,9 +119,7 @@ const LendsListItem = ({ lend, type }) => {
             height="16"
             fill={LIGHT_GRAY_COLOR}
             />
-            <Text style={[componentStyles.detailText]}>
-              {returnIn(lend.lendDate, lend.returnDate)} Dni
-            </Text>
+            {renderReturnInDays(lend.deadlineDate, lend.returnDate)}
           </View>
           <View
             style={[

@@ -14,6 +14,8 @@ export const GRAY_COLOR = '#c9d1d6';
 export const LIGHT_GRAY_COLOR = '#a3aaad';
 export const VERY_LIGHT_GRAY_COLOR = '#f9f9f9';
 
+export const NEGATIVE_COLOR = '#d0021b';
+
 export const ACCENT_LINEAR_START = '#4ed16f';
 export const ACCENT_LINEAR_END = '#33a476';
 
