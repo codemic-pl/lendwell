@@ -35,7 +35,7 @@ class Lends extends Component {
         <NavBar
           title="Podgląd pożyczki"
           backButton
-          rightButton={this.renderEditButton}
+          rightButton={this.renderEditButton()}
           rightButtonOnPress={this.onPressEdit}
           rightButtonContainerStyle={[
             componentStyles.editButton

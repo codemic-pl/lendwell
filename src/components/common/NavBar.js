@@ -61,7 +61,7 @@ class NavBarComponent extends Component {
             componentStyles.leftButton,
             this.props.backButtonContainerStyle
           ]}
-          onPress={this.onBackButtonPress}
+          onPress={this.onBackButtonPress.bind(this)}
         >
           <View>
             <AppIcon
@@ -84,7 +84,7 @@ class NavBarComponent extends Component {
             componentStyles.leftButton,
             this.props.leftButtonContainerStyle
           ]}
-          onPress={this.onLeftButtonPress}
+          onPress={this.onLeftButtonPress.bind(this)}
         >
           <View>
             {this.props.leftButton}
@@ -103,7 +103,7 @@ class NavBarComponent extends Component {
             componentStyles.rightButton,
             this.props.rightButtonContainerStyle
           ]}
-          onPress={this.onRightButtonPress}
+          onPress={this.onRightButtonPress.bind(this)}
         >
           <View>
             {this.props.rightButton}
