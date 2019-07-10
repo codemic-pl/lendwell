@@ -36,6 +36,15 @@ class LendView extends Component {
   onPressEdit() {
     console.log('onPressEdit');
   }
+  onDeleteLend() {
+    const { lend, lends } = this.state;
+    console.log('onDeleteLend');
+    this.props.deleteLend({
+      lends,
+      lendId: lend.id
+    });
+    Actions.pop();
+  }
   getLend(id) {
     if (!this.props || !this.props.lends || !this.props.lends.length) {
       return null;
@@ -87,7 +96,8 @@ ${this.renderReturnInDays(lend.returnDate, lend.deadlineDate)}`;
   }
   initState(props) {
     const state = {
-      lend: this.getLend(props.id)
+      lend: this.getLend(props.id),
+      lends: this.props.lends
     };
     return state;
   }
@@ -143,7 +153,6 @@ ${this.renderReturnInDays(lend.returnDate, lend.deadlineDate)}`;
     );
   }
   renderActionButtons() {
-    const lend = { ...this.state.lend };
     return (
       <View
         style={componentStyles.buttons}
@@ -152,19 +161,19 @@ ${this.renderReturnInDays(lend.returnDate, lend.deadlineDate)}`;
           text="Usuń"
           type="negative"
           buttonStyle={componentStyles.button}
-          onPress={() => console.log('abc')}
+          onPress={this.onDeleteLend.bind(this)}
         />
         <Button
           text="Przypomnij"
           buttonStyle={componentStyles.button}
-          onPress={() => console.log(lend)}
+          onPress={() => console.log('zxc')}
         />
       </View>
     );
   }
 
   render() {
-    const lend = { ...this.state.lend };
+    const { lend } = this.state;
     return (
       <View
         style={[componentStyles.container]}

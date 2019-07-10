@@ -1,5 +1,8 @@
 import short from 'short-uuid';
-import { SET_LENDS_SWIPER_INDEX } from '../actions/types';
+import {
+  SET_LENDS_SWIPER_INDEX,
+  DELETE_LEND
+} from '../actions/types';
 
 const INITIAL_STATE = {
   swiperIndex: 0,
@@ -89,6 +92,11 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    case DELETE_LEND:
+      return {
+        ...state,
+        lends: action.payload
+      };
     case SET_LENDS_SWIPER_INDEX:
       return {
         ...state,
