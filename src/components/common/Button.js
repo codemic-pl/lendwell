@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 import componentStyles from '../../assets/styles/common/Button';
 
-const Button = ({ onPress, children, buttonStyle, textStyle, text }) => {
+const Button = ({ onPress, children, buttonStyle, textStyle, text, type }) => {
   const renderChildren = () => {
     if (text) {
       return (
@@ -16,7 +16,14 @@ const Button = ({ onPress, children, buttonStyle, textStyle, text }) => {
     );
   };
   return (
-    <TouchableOpacity onPress={onPress} style={[componentStyles.button, buttonStyle]}>
+    <TouchableOpacity
+      onPress={onPress}
+      style={[
+        componentStyles.button,
+        (type === 'negative' ? componentStyles.buttonNegative : null),
+        buttonStyle
+      ]}
+    >
       {renderChildren()}
     </TouchableOpacity>
   );

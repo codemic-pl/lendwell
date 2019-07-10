@@ -1,28 +1,31 @@
 import { StyleSheet } from 'react-native';
+// import {
+//   GRAY_COLOR,
+//   TEXT_COLOR
+// } from './common/Variables';
 
 export default StyleSheet.create({
+  container: {
+    flex: 1
+  },
   editButton: {
     width: 34,
     height: 34,
     right: 10
   },
-  itemsHolder: {
+  details: {
     flex: 1,
-    alignSelf: 'stretch',
     paddingHorizontal: 15,
-    paddingVertical: 24
+    paddingVertical: 18,
+    backgroundColor: '#ffffff'
   },
-  noItemsHolder: {
-    flex: 1,
-    alignSelf: 'stretch',
-    padding: 15,
-    alignItems: 'center'
+  buttons: {
+    marginTop: 24,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row'
   },
-  noItemsText: {
-    paddingTop: 50,
-    fontSize: 15,
-    fontFamily: 'oxygen',
-    // fontWeight: 'bold',
-    color: '#263844'
+  button: {
+    margin: 8
   }
 });

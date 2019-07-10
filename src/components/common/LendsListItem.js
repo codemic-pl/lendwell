@@ -50,10 +50,8 @@ const LendsListItem = ({ lend, type }) => {
 
   const onSelectLend = () => {
     if (!lend.id) {
-      console.log('No Lend ID! Do nothing!');
       return false;
     }
-    console.log('go go go');
     Actions.lend({ id: lend.id });
   };
 
