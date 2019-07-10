@@ -18,13 +18,13 @@ import componentStyles from '../assets/styles/LendView';
 
 class LendView extends Component {
   state = this.initState(this.props);
-  componentWillMount() {
+  componentDidMount() {
     if (!this.props || !this.props.id ||
         !this.props.lends || !this.props.lends.length ||
         !this.getLend(this.props.id)) {
       Alert.alert(
         'Błąd!',
-        'Nie ma takiej pożyczki.',
+        'Błąd podczas ładowania pożyczki, spróbuj ponownie.',
         [
           { text: 'OK', onPress: () => Actions.pop() },
         ],
@@ -34,16 +34,20 @@ class LendView extends Component {
     }
   }
   onPressEdit() {
+    // TODO: Edit press
     console.log('onPressEdit');
   }
-  onDeleteLend() {
+  onPressDelete() {
     const { lend, lends } = this.state;
-    console.log('onDeleteLend');
     this.props.deleteLend({
       lends,
       lendId: lend.id
     });
     Actions.pop();
+  }
+  onPressRemind() {
+    // TODO: Remind press
+    console.log('onPressRemind');
   }
   getLend(id) {
     if (!this.props || !this.props.lends || !this.props.lends.length) {
@@ -161,19 +165,40 @@ ${this.renderReturnInDays(lend.returnDate, lend.deadlineDate)}`;
           text="Usuń"
           type="negative"
           buttonStyle={componentStyles.button}
-          onPress={this.onDeleteLend.bind(this)}
+          onPress={this.onPressDelete.bind(this)}
         />
         <Button
           text="Przypomnij"
           buttonStyle={componentStyles.button}
-          onPress={() => console.log('zxc')}
+          onPress={this.onPressRemind.bind(this)}
         />
+      </View>
+    );
+  }
+  renderBlankScreen() {
+    return (
+      <View
+        style={[componentStyles.container]}
+      >
+        <NavBar
+          title="Podgląd pożyczki"
+          backButton
+          rightButton={this.renderEditButton()}
+          rightButtonOnPress={this.onPressEdit}
+          rightButtonContainerStyle={[
+            componentStyles.editButton
+          ]}
+        />
+        <ScrollView style={[componentStyles.details]} />
       </View>
     );
   }
 
   render() {
     const { lend } = this.state;
+    if (!lend) {
+      return this.renderBlankScreen();
+    }
     return (
       <View
         style={[componentStyles.container]}

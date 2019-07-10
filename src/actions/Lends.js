@@ -11,9 +11,7 @@ export const setLendsSwiperUpdateIndex = (index) => {
 };
 
 export const deleteLend = ({ lends, lendId }) => {
-  console.log('deleteLend');
   const newLendsList = lends.filter((element) => element.id !== lendId);
-  console.log(newLendsList);
   return {
     type: DELETE_LEND,
     payload: newLendsList
