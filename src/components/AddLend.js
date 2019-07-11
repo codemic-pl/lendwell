@@ -5,6 +5,7 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
+import { DatePickerDialog } from 'react-native-datepicker-dialog';
 import {
   Button,
   Input,
@@ -18,6 +19,15 @@ class AddLend extends Component {
     this.props.setEditableLend(this.props.newLendTemplate, {});
   }
 
+  onDeadlineDateSelect() {
+    const { editableLend } = this.props;
+    this.refs.deadlineDatePicker.open({
+      minDate: new Date(editableLend.createdDate),
+      date: new Date(editableLend.deadlineDate),
+      maxDate: new Date('2050-01-01')
+    });
+  }
+
   onPressAdd() {
     // TODO: Edit press
     const { editableLend } = this.props;
@@ -27,14 +37,14 @@ class AddLend extends Component {
     }
   }
 
-  onChangePerson(text) {
+  onPersonChanged(text) {
     const { setEditableLend, editableLend } = this.props;
     setEditableLend(editableLend, {
       person: text
     });
   }
 
-  onChangeName(text) {
+  onNameChanged(text) {
     const { setEditableLend, editableLend } = this.props;
     console.log(editableLend);
     setEditableLend(editableLend, {
@@ -42,7 +52,7 @@ class AddLend extends Component {
     });
   }
 
-  onChangeDeadlineDate(date) {
+  onDeadlineDateChanged(date) {
     const { setEditableLend, editableLend } = this.props;
     let changedDate = date;
     if (typeof (date) !== 'string') {
@@ -98,25 +108,27 @@ class AddLend extends Component {
             placeholder="Imię"
             label="Komu pożyczyłeś"
             value={editableLend.person}
-            onChangeText={this.onChangePerson.bind(this)}
+            onChangeText={this.onPersonChanged.bind(this)}
           />
           <Input
             placeholder="Rzecz, np. wiertarka"
             numberOfLines={6}
             label="Co pożyczyłeś"
             value={editableLend.name}
-            onChangeText={this.onChangeName.bind(this)}
+            onChangeText={this.onNameChanged.bind(this)}
           />
           <Input
             placeholder="30/12/2019"
             label="Data planowanego zwrotu"
             disabled
+            onDisabledClick={this.onDeadlineDateSelect.bind(this)}
             value={this.formatDate(editableLend.deadlineDate)}
-            onChangeText={this.onChangeDeadlineDate.bind(this)}
+            onChangeText={this.onDeadlineDateChanged.bind(this)}
           />
           {/* TODO: Add remind time */}
           {this.renderActionButtons()}
         </ScrollView>
+        <DatePickerDialog ref="deadlineDatePicker" onDatePicked={this.onDeadlineDateChanged.bind(this)} />
       </View>
     );
   }

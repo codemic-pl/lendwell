@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextInput, View, Text } from 'react-native';
+import { TextInput, View, Text, TouchableOpacity } from 'react-native';
 import componentStyles from '../../assets/styles/common/Input';
 import { GRAY_COLOR } from '../../assets/styles/common/Variables';
 
@@ -13,6 +13,7 @@ const Input = ({
   isRow,
   keyboardType,
   hide,
+  onDisabledClick,
   onBlur,
   onFocus,
   onEndEditing,
@@ -35,6 +36,22 @@ const Input = ({
   };
 
   const renderFormControl = () => {
+    if (disabled && onDisabledClick) {
+      return (
+        <View
+          style={[
+            componentStyles.inputContainer,
+            inputContainerStyle
+          ]}
+        >
+          <TouchableOpacity
+            onPress={onDisabledClick}
+          >
+            {renderInput()}
+          </TouchableOpacity>
+        </View>
+      )
+    }
     return (
       <View
         style={[
