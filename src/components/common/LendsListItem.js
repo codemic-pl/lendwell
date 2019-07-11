@@ -41,7 +41,7 @@ const LendsListItem = ({ lend, type }) => {
     let daysCount = ((new Date(deadlineDate) - new Date(getDateYMD(returnDate))) /
                     (1000 * 60 * 60 * 24));
     if (daysCount < 0) {
-      daysCount = Math.floor(daysCount * -1) * -1;
+      daysCount = Math.ceil(daysCount * -1) * -1;
     } else {
       daysCount = Math.floor(daysCount);
     }

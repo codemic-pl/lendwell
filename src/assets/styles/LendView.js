@@ -1,8 +1,7 @@
 import { StyleSheet } from 'react-native';
-// import {
-//   GRAY_COLOR,
-//   TEXT_COLOR
-// } from './common/Variables';
+import {
+  ACCENT_COLOR
+} from './common/Variables';
 
 export default StyleSheet.create({
   container: {
@@ -18,6 +17,23 @@ export default StyleSheet.create({
     paddingHorizontal: 15,
     paddingVertical: 18,
     backgroundColor: '#ffffff'
+  },
+  status: {
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    flexDirection: 'row'
+  },
+  statusButton: {
+    backgroundColor: 'transparent'
+  },
+  statusButtonText: {
+    color: ACCENT_COLOR,
+    fontWeight: 'normal',
+    fontSize: 11,
+    letterSpacing: 2,
+    paddingVertical: 4,
+    paddingHorizontal: 0,
+    textTransform: 'uppercase'
   },
   buttons: {
     marginTop: 24,

@@ -15,6 +15,7 @@ const RouterComponent = () => {
         headerLayoutPreset="center"
       >
         <Scene
+          initial
           key="tutorial"
         >
           <Scene
@@ -27,7 +28,6 @@ const RouterComponent = () => {
         <Scene
           key="home"
           tabs
-          initial
         >
           <Scene
             key="lends"

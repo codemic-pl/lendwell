@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {
-  Text,
   Alert,
   ScrollView,
   View
@@ -15,6 +14,10 @@ import {
 } from './common';
 import * as actions from '../actions';
 import componentStyles from '../assets/styles/LendView';
+import {
+  ACCENT_VERY_DARK_COLOR,
+  ACTIVE_LEND_DARK_COLOR
+} from '../assets/styles/common/Variables';
 
 class LendView extends Component {
   state = this.initState(this.props);
@@ -48,6 +51,13 @@ class LendView extends Component {
   onPressRemind() {
     // TODO: Remind press
     console.log('onPressRemind');
+  }
+  onPressChangeStatus() {
+    const { lends, lend } = this.state;
+    this.props.changeLendStatus({
+      lends,
+      lendId: lend.id
+    });
   }
   getLend(id) {
     if (!this.props || !this.props.lends || !this.props.lends.length) {
@@ -92,7 +102,7 @@ ${this.renderReturnInDays(lend.returnDate, lend.deadlineDate)}`;
     let daysCount = ((new Date(deadlineDate) - new Date(this.getDateYMD(returnDate))) /
                     (1000 * 60 * 60 * 24));
     if (daysCount < 0) {
-      daysCount = Math.floor(daysCount * -1) * -1;
+      daysCount = Math.ceil(daysCount * -1) * -1;
     } else {
       daysCount = Math.floor(daysCount);
     }
@@ -106,12 +116,18 @@ ${this.renderReturnInDays(lend.returnDate, lend.deadlineDate)}`;
     return state;
   }
   renderReturnInDays(deadlineDate, returnDate) {
-    const days = this.returnIn(returnDate, deadlineDate);
+    let days = this.returnIn(returnDate, deadlineDate);
+    let onTime = true;
 
     if (days < 0) {
-      return `(${days * -1} dni po terminie zwrotu)`;
+      days *= -1;
+      onTime = false;
+    }
+
+    if (days === 1) {
+      return `(${days} dzień ${onTime ? 'przed terminem' : 'po terminie'} zwrotu)`;
     } else if (days > 0) {
-      return `(${days} dni przed terminie zwrotu)`;
+      return `(${days} dni ${onTime ? 'przed terminem' : 'po terminie'} zwrotu)`;
     }
     return '';
   }
@@ -138,23 +154,17 @@ ${this.renderReturnInDays(lend.returnDate, lend.deadlineDate)}`;
     return null;
   }
   renderRemindTime() {
-    if (this.state.lend.status !== 'completed') {
-      return (
-        <LendDetail
-          label='Przypomnienie'
-          text={this.getRemindTime()}
-        />
-      );
-    }
+    // TODO: Need add local push notifications, it's not needed in MVP
     return null;
-  }
-  renderDetail(label, value) {
-    return (
-      <View style={[componentStyles.detail]}>
-        <Text style={[componentStyles.label]}>{label}</Text>
-        <Text style={[componentStyles.value]}>{value || ' '}</Text>
-      </View>
-    );
+    // if (this.state.lend.status !== 'completed') {
+    //   return (
+    //     <LendDetail
+    //       label='Przypomnienie'
+    //       text={this.getRemindTime()}
+    //     />
+    //   );
+    // }
+    // return null;
   }
   renderActionButtons() {
     return (
@@ -235,10 +245,23 @@ ${this.renderReturnInDays(lend.returnDate, lend.deadlineDate)}`;
           />
           {this.renderRealReturnDate()}
           {this.renderRemindTime()}
-          <LendDetail
-            label='Status'
-            text={lend.status === 'completed' ? 'Oddane' : 'W trakcie'}
-          />
+          <View
+            style={componentStyles.status}
+          >
+            <LendDetail
+              label='Status'
+              text={lend.status === 'completed' ? 'Oddane' : 'W trakcie'}
+              textColor={(lend.status === 'completed' ?
+                        ACCENT_VERY_DARK_COLOR :
+                        ACTIVE_LEND_DARK_COLOR)}
+            />
+            <Button
+              text="Zmień"
+              buttonStyle={componentStyles.statusButton}
+              textStyle={componentStyles.statusButtonText}
+              onPress={this.onPressChangeStatus.bind(this)}
+            />
+          </View>
           {this.renderActionButtons()}
         </ScrollView>
       </View>
