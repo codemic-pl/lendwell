@@ -6,9 +6,10 @@ import {
 
 const getDateYMD = (someDate) => {
   const date = someDate || new Date();
-  return `${new Date(date).getFullYear()}-
-          ${new Date(date).getMonth() + 1}-
-          ${new Date(date).getDate()}`;
+  const Y = new Date(date).getFullYear();
+  const M = new Date(date).getMonth() + 1;
+  const D = new Date(date).getDate();
+  return `${Y}-${M}-${D}`;
 };
 
 export const setLendsSwiperUpdateIndex = (index) => {

@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 import {
-  ACCENT_COLOR,
+  ACCENT_VERY_DARK_COLOR,
   LIGHT_TEXT_COLOR,
   NEGATIVE_COLOR
 } from './Variables';
@@ -21,7 +21,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     alignSelf: 'stretch',
-    backgroundColor: ACCENT_COLOR,
+    backgroundColor: ACCENT_VERY_DARK_COLOR,
     borderRadius: 26
   },
   buttonNegative: {
