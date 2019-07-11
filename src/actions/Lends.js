@@ -1,5 +1,7 @@
+import short from 'short-uuid';
 import {
   SET_LENDS_SWIPER_INDEX,
+  SET_EDITABLE_LEND,
   DELETE_LEND,
   CHANGE_LEND_STATUS
 } from './types';
@@ -40,5 +42,25 @@ export const changeLendStatus = ({ lends, lendId }) => {
   return {
     type: CHANGE_LEND_STATUS,
     payload: newLendsList
+  };
+};
+
+export const setEditableLend = (lendDetails) => {
+  if (!lendDetails) {
+    return null;
+  }
+  let editableLend = { ...lendDetails };
+
+  if (!lendDetails.id) {
+    editableLend = {
+      ...lendDetails,
+      createdDate: getDateYMD(),
+      id: short.generate()
+    };
+  }
+
+  return {
+    type: SET_EDITABLE_LEND,
+    payload: editableLend
   };
 };

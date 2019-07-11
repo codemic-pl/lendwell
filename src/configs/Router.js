@@ -3,6 +3,7 @@ import { Scene, Stack, Router } from 'react-native-router-flux';
 import Onboarding from '../components/Onboarding';
 import Lends from '../components/Lends';
 import LendView from '../components/LendView';
+import AddLend from '../components/AddLend';
 import { NavBar } from '../components/common/';
 
 const RouterComponent = () => {
@@ -15,7 +16,6 @@ const RouterComponent = () => {
         headerLayoutPreset="center"
       >
         <Scene
-          initial
           key="tutorial"
         >
           <Scene
@@ -45,6 +45,12 @@ const RouterComponent = () => {
           key="lend"
           path="/lend/:id/"
           component={LendView}
+        />
+        <Scene
+          initial
+          key="addLend"
+          title="Dodaj pożyczkę"
+          component={AddLend}
         />
       </Stack>
     </Router>
