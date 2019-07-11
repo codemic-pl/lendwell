@@ -26,6 +26,7 @@ const RouterComponent = () => {
           />
         </Scene>
         <Scene
+          initial
           key="home"
           tabs
         >
@@ -47,7 +48,6 @@ const RouterComponent = () => {
           component={LendView}
         />
         <Scene
-          initial
           key="addLend"
           title="Dodaj pożyczkę"
           component={AddLend}

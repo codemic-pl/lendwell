@@ -3,7 +3,8 @@ import {
   SET_LENDS_SWIPER_INDEX,
   SET_EDITABLE_LEND,
   DELETE_LEND,
-  CHANGE_LEND_STATUS
+  CHANGE_LEND_STATUS,
+  ADD_LEND
 } from './types';
 
 const getDateYMD = (someDate) => {
@@ -45,22 +46,37 @@ export const changeLendStatus = ({ lends, lendId }) => {
   };
 };
 
-export const setEditableLend = (lendDetails) => {
+export const setEditableLend = (newLendTemplate, lendDetails) => {
   if (!lendDetails) {
     return null;
   }
-  let editableLend = { ...lendDetails };
 
-  if (!lendDetails.id) {
-    editableLend = {
-      ...lendDetails,
-      createdDate: getDateYMD(),
-      id: short.generate()
-    };
+  let editableLend = { ...newLendTemplate };
+
+  if (lendDetails) {
+    editableLend = { ...editableLend, ...lendDetails };
   }
+
+  if (!editableLend.id) {
+    editableLend.id = short.generate();
+  }
+  if (!editableLend.createdDate) {
+    editableLend.createdDate = getDateYMD();
+  }
+  if (!editableLend.deadlineDate) {
+    editableLend.deadlineDate = getDateYMD();
+  }
+
 
   return {
     type: SET_EDITABLE_LEND,
     payload: editableLend
+  };
+};
+
+export const addLend = (lend) => {
+  return {
+    type: ADD_LEND,
+    payload: lend
   };
 };

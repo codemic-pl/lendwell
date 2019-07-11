@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import {
-  Alert,
   ScrollView,
   View
 } from 'react-native';
 import { connect } from 'react-redux';
-// import { Actions } from 'react-native-router-flux';
+import { Actions } from 'react-native-router-flux';
 import {
-  // AppIcon,
   Button,
+  Input,
   NavBar,
 } from './common';
 import * as actions from '../actions';
@@ -16,11 +15,42 @@ import componentStyles from '../assets/styles/AddLend';
 
 class AddLend extends Component {
   componentDidMount() {
-    this.props.setEditableLend(this.props.newLendTemplate);
+    this.props.setEditableLend(this.props.newLendTemplate, {});
   }
+
   onPressAdd() {
     // TODO: Edit press
-    console.log('onPressAdd');
+    const { editableLend } = this.props;
+    if (editableLend) {
+      this.props.addLend(editableLend);
+      Actions.pop();
+    }
+  }
+
+  onChangePerson(text) {
+    const { setEditableLend, editableLend } = this.props;
+    setEditableLend(editableLend, {
+      person: text
+    });
+  }
+
+  onChangeName(text) {
+    const { setEditableLend, editableLend } = this.props;
+    console.log(editableLend);
+    setEditableLend(editableLend, {
+      name: text
+    });
+  }
+
+  onChangeDeadlineDate(date) {
+    const { setEditableLend, editableLend } = this.props;
+    let changedDate = date;
+    if (typeof (date) !== 'string') {
+      changedDate = this.getDateYMD(date);
+    }
+    setEditableLend(editableLend, {
+      deadlineDate: changedDate
+    });
   }
 
   getDateYMD(someDate) {
@@ -30,10 +60,12 @@ class AddLend extends Component {
     const D = new Date(date).getDate();
     return `${Y}-${M}-${D}`;
   }
+
   formatDate(someDate) {
     const date = someDate || new Date();
     return new Date(date).toLocaleDateString('pl-PL');
   }
+
   renderActionButtons() {
     return (
       <View
@@ -51,6 +83,7 @@ class AddLend extends Component {
   render() {
     const { editableLend } = this.props;
     console.log(editableLend);
+    console.log(this.props);
 
     return (
       <View
@@ -61,9 +94,26 @@ class AddLend extends Component {
           backButton
         />
         <ScrollView style={[componentStyles.details]}>
-          {/* Input: Data planowanego zwrotu */}
-          {/* Input: Nazwa przedmiotu */}
-          {/* Input: Nazwa pożyczkobiorcy */}
+          <Input
+            placeholder="Imię"
+            label="Komu pożyczyłeś"
+            value={editableLend.person}
+            onChangeText={this.onChangePerson.bind(this)}
+          />
+          <Input
+            placeholder="Rzecz, np. wiertarka"
+            numberOfLines={6}
+            label="Co pożyczyłeś"
+            value={editableLend.name}
+            onChangeText={this.onChangeName.bind(this)}
+          />
+          <Input
+            placeholder="30/12/2019"
+            label="Data planowanego zwrotu"
+            disabled
+            value={this.formatDate(editableLend.deadlineDate)}
+            onChangeText={this.onChangeDeadlineDate.bind(this)}
+          />
           {/* TODO: Add remind time */}
           {this.renderActionButtons()}
         </ScrollView>

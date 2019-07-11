@@ -5,3 +5,4 @@ export const SET_LENDS_SWIPER_INDEX = 'set_lends_swiper_index';
 export const DELETE_LEND = 'delete_lend';
 export const CHANGE_LEND_STATUS = 'change_lend_status';
 export const SET_EDITABLE_LEND = 'set_editable_lend';
+export const ADD_LEND = 'add_lend';

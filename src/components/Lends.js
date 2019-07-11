@@ -5,7 +5,8 @@ import {
   View
 } from 'react-native';
 import { connect } from 'react-redux';
-import { NavBar, Swiper, SwiperPage, LendsList } from './common';
+import { Actions } from 'react-native-router-flux';
+import { NavBar, Swiper, SwiperPage, LendsList, Button } from './common';
 import * as actions from '../actions';
 import componentStyles from '../assets/styles/Lends';
 
@@ -88,6 +89,10 @@ class Lends extends Component {
               lends={this.getActiveLends()}
               lendsType="active"
               noItemsText="Brak aktywnych pożyczek"
+            />
+            <Button
+              text="Bla bla bla"
+              onPress={() => { Actions.addLend(); }}
             />
           </SwiperPage>
           <SwiperPage>
