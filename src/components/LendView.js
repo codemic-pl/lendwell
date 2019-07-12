@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {
   Alert,
   ScrollView,
+  Share,
   View
 } from 'react-native';
 import { connect } from 'react-redux';
@@ -35,9 +36,11 @@ class LendView extends Component {
       return false;
     }
   }
+
   onPressEdit() {
     Actions.editLend({ lendId: this.props.lendId });
   }
+
   onPressDelete() {
     const { lendId, lends } = this.props;
     this.props.deleteLend({
@@ -46,9 +49,35 @@ class LendView extends Component {
     });
     Actions.pop();
   }
-  onPressRemind() {
-    // TODO: Remind press
-    console.log('onPressRemind');
+
+  async onPressRemind() {
+    try {
+      const result = await Share.share({
+        // TODO: CHANGE TEXT WHEN WILL BE AVAILABLE AT STORAGE
+        message:
+          'Lorem ipsum',
+      });
+
+      if (result.action === Share.sharedAction) {
+        if (result.activityType) {
+          // shared with activity type of result.activityType
+        } else {
+          // shared
+        }
+      } else if (result.action === Share.dismissedAction) {
+        // dismissed
+      }
+    } catch (error) {
+      Alert.alert(
+        'Błąd!',
+        error.message,
+        [
+          { text: 'OK', onPress: () => Actions.pop() },
+        ],
+        { cancelable: false },
+      );
+      return false;
+    }
   }
   onPressChangeStatus() {
     const { lendId, lends } = this.props;
