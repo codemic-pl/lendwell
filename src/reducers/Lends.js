@@ -3,7 +3,8 @@ import {
   SET_EDITABLE_LEND,
   DELETE_LEND,
   CHANGE_LEND_STATUS,
-  ADD_LEND
+  ADD_LEND,
+  EDIT_LEND
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -58,6 +59,12 @@ export default (state = INITIAL_STATE, action) => {
           ...state.lends,
           action.payload
         ]
+      };
+    case EDIT_LEND:
+      console.log(action.payload);
+      return {
+        ...state,
+        lends: action.payload
       };
     default:
       return state;

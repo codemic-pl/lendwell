@@ -4,6 +4,7 @@ import Onboarding from '../components/Onboarding';
 import Lends from '../components/Lends';
 import LendView from '../components/LendView';
 import AddLend from '../components/AddLend';
+import EditLend from '../components/EditLend';
 import { NavBar } from '../components/common/';
 
 const RouterComponent = () => {
@@ -44,8 +45,13 @@ const RouterComponent = () => {
         </Scene>
         <Scene
           key="lend"
-          path="/lend/:id/"
+          path="/lend/:lendId/"
           component={LendView}
+        />
+        <Scene
+          key="editLend"
+          path="/lend/:lendId/edit/"
+          component={EditLend}
         />
         <Scene
           key="addLend"

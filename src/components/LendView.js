@@ -20,11 +20,10 @@ import {
 } from '../assets/styles/common/Variables';
 
 class LendView extends Component {
-  state = this.initState(this.props);
   componentDidMount() {
-    if (!this.props || !this.props.id ||
+    if (!this.props || !this.props.lendId ||
         !this.props.lends || !this.props.lends.length ||
-        !this.getLend(this.props.id)) {
+        !this.getLend(this.props.lendId)) {
       Alert.alert(
         'Błąd!',
         'Błąd podczas ładowania pożyczki, spróbuj ponownie.',
@@ -37,14 +36,13 @@ class LendView extends Component {
     }
   }
   onPressEdit() {
-    // TODO: Edit press
-    console.log('onPressEdit');
+    Actions.editLend({ lendId: this.props.lendId });
   }
   onPressDelete() {
-    const { lend, lends } = this.state;
+    const { lendId, lends } = this.props;
     this.props.deleteLend({
       lends,
-      lendId: lend.id
+      lendId
     });
     Actions.pop();
   }
@@ -53,10 +51,10 @@ class LendView extends Component {
     console.log('onPressRemind');
   }
   onPressChangeStatus() {
-    const { lends, lend } = this.state;
+    const { lendId, lends } = this.props;
     this.props.changeLendStatus({
       lends,
-      lendId: lend.id
+      lendId
     });
   }
   getLend(id) {
@@ -78,7 +76,7 @@ class LendView extends Component {
     return '5 dni przed planowaną datą zwrotu';
   }
   getRealReturnDate() {
-    const lend = { ...this.state.lend };
+    const lend = { ...this.getLend(this.props.lendId) };
     return `${this.formatDate(lend.returnDate)} \
 ${this.renderReturnInDays(lend.returnDate, lend.deadlineDate)}`;
   }
@@ -109,13 +107,6 @@ ${this.renderReturnInDays(lend.returnDate, lend.deadlineDate)}`;
     }
     return daysCount;
   }
-  initState(props) {
-    const state = {
-      lend: this.getLend(props.id),
-      lends: this.props.lends
-    };
-    return state;
-  }
   renderReturnInDays(deadlineDate, returnDate) {
     let days = this.returnIn(returnDate, deadlineDate);
     let onTime = true;
@@ -144,7 +135,7 @@ ${this.renderReturnInDays(lend.returnDate, lend.deadlineDate)}`;
   }
 
   renderRealReturnDate() {
-    if (this.state.lend.status === 'completed') {
+    if (this.getLend(this.props.lendId).status === 'completed') {
       return (
         <LendDetail
           label='Rzeczywista data zwrotu'
@@ -195,7 +186,7 @@ ${this.renderReturnInDays(lend.returnDate, lend.deadlineDate)}`;
           title="Podgląd pożyczki"
           backButton
           rightButton={this.renderEditButton()}
-          rightButtonOnPress={this.onPressEdit}
+          rightButtonOnPress={this.onPressEdit.bind(this)}
           rightButtonContainerStyle={[
             componentStyles.editButton
           ]}
@@ -206,7 +197,8 @@ ${this.renderReturnInDays(lend.returnDate, lend.deadlineDate)}`;
   }
 
   render() {
-    const { lend } = this.state;
+    const { lendId } = this.props;
+    const lend = this.getLend(lendId);
     if (!lend) {
       return this.renderBlankScreen();
     }
@@ -218,7 +210,7 @@ ${this.renderReturnInDays(lend.returnDate, lend.deadlineDate)}`;
           title="Podgląd pożyczki"
           backButton
           rightButton={this.renderEditButton()}
-          rightButtonOnPress={this.onPressEdit}
+          rightButtonOnPress={this.onPressEdit.bind(this)}
           rightButtonContainerStyle={[
             componentStyles.editButton
           ]}
@@ -272,11 +264,13 @@ ${this.renderReturnInDays(lend.returnDate, lend.deadlineDate)}`;
 
 const mapStateToProps = state => {
   const {
-    lends
+    lends,
+    editableLend
   } = state.lends;
 
   return {
-    lends
+    lends,
+    editableLend
   };
 };
 

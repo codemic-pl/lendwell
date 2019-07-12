@@ -53,7 +53,7 @@ const LendsListItem = ({ lend, type }) => {
     if (!lend.id) {
       return false;
     }
-    Actions.lend({ id: lend.id });
+    Actions.lend({ lendId: lend.id });
   };
 
   const renderReturnInDays = (deadlineDate, returnDate) => {
