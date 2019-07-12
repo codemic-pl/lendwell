@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
-import {
-  ACCENT_COLOR
-} from './common/Variables';
+// import {
+//   ACCENT_COLOR
+// } from './common/Variables';
 
 export default StyleSheet.create({
   container: {

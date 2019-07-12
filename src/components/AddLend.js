@@ -29,7 +29,6 @@ class AddLend extends Component {
   }
 
   onPressAdd() {
-    // TODO: Edit press
     const { editableLend } = this.props;
     if (editableLend) {
       this.props.addLend(editableLend);
@@ -46,7 +45,6 @@ class AddLend extends Component {
 
   onNameChanged(text) {
     const { setEditableLend, editableLend } = this.props;
-    console.log(editableLend);
     setEditableLend(editableLend, {
       name: text
     });
@@ -92,8 +90,6 @@ class AddLend extends Component {
 
   render() {
     const { editableLend } = this.props;
-    console.log(editableLend);
-    console.log(this.props);
 
     return (
       <View
@@ -128,7 +124,10 @@ class AddLend extends Component {
           {/* TODO: Add remind time */}
           {this.renderActionButtons()}
         </ScrollView>
-        <DatePickerDialog ref="deadlineDatePicker" onDatePicked={this.onDeadlineDateChanged.bind(this)} />
+        <DatePickerDialog
+          ref="deadlineDatePicker"
+          onDatePicked={this.onDeadlineDateChanged.bind(this)}
+        />
       </View>
     );
   }
