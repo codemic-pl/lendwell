@@ -45,11 +45,13 @@ const RouterComponent = () => {
         </Scene>
         <Scene
           key="lend"
+          title="Podgląd pożyczki"
           path="/lend/:lendId/"
           component={LendView}
         />
         <Scene
           key="editLend"
+          title="Edytuj pożyczkę"
           path="/lend/:lendId/edit/"
           component={EditLend}
         />

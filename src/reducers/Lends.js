@@ -61,7 +61,6 @@ export default (state = INITIAL_STATE, action) => {
         ]
       };
     case EDIT_LEND:
-      console.log(action.payload);
       return {
         ...state,
         lends: action.payload
