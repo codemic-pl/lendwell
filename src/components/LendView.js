@@ -37,8 +37,7 @@ class LendView extends Component {
     }
   }
   onPressEdit() {
-    // TODO: Edit press
-    console.log('onPressEdit');
+    Actions.editLend({ lendId: this.props.lendId });
   }
   onPressDelete() {
     const { lend, lends } = this.state;

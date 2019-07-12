@@ -4,7 +4,8 @@ import {
   SET_EDITABLE_LEND,
   DELETE_LEND,
   CHANGE_LEND_STATUS,
-  ADD_LEND
+  ADD_LEND,
+  EDIT_LEND
 } from './types';
 
 const getDateYMD = (someDate) => {
@@ -67,7 +68,6 @@ export const setEditableLend = (newLendTemplate, lendDetails) => {
     editableLend.deadlineDate = getDateYMD();
   }
 
-
   return {
     type: SET_EDITABLE_LEND,
     payload: editableLend
@@ -78,5 +78,19 @@ export const addLend = (lend) => {
   return {
     type: ADD_LEND,
     payload: lend
+  };
+};
+
+export const editLend = ({ lends, lend }) => {
+  const newLendsList = [...lends];
+
+  if (lend) {
+    const lendArrayIndex = lends.findIndex((el) => el.id === lend.id);
+    newLendsList[lendArrayIndex] = lend;
+  }
+
+  return {
+    type: EDIT_LEND,
+    payload: newLendsList
   };
 };
