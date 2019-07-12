@@ -23,7 +23,7 @@ const persistConfig = {
   key: 'root',
   storage,
   blacklist: ['FLUX', 'loading'],
-  whitelist: ['defaults'],
+  whitelist: ['defaults', 'lends'],
   debounce: 33,
   timeout: 10000,
 };
