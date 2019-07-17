@@ -73,7 +73,7 @@ class Swiper extends Component {
    */
   onScrollEndDrag = e => {
     const { contentOffset: { x: newOffset } } = e.nativeEvent;
-    const { children } = this.state;
+    const { children } = this.props;
     const { index } = this.state;
     const { offset } = this.internals;
 
@@ -99,22 +99,14 @@ class Swiper extends Component {
    * Initialize the state
    */
   initState(props) {
-    // exclude screens if needed (for eg. absolute positioned buttons)
-    const children = props.children ?
-      props.children.filter(child => !child.props.excludeSwiper) : [];
-    // Get just excluded children
-    const excludedChildren = props.children ?
-      props.children.filter(child => child.props.excludeSwiper) : [];
     // Get the total number of slides passed as children
-    const total = children ? children.length || 1 : 0;
+    const total = props.children ? props.children.length || 1 : 0;
       // Current index
     const index = total > 1 ? Math.min(props.index, total - 1) : 0;
       // Current offset
     const offset = width * index;
 
     const state = {
-      children,
-      excludedChildren,
       total,
       index,
       offset,
@@ -307,7 +299,7 @@ class Swiper extends Component {
   /**
    * Render the component
    */
-  render = ({ children, excludedChildren, containerStyle } = this.state) => {
+  render = ({ children, containerStyle } = this.props) => {
     return (
       <View
         style={[
@@ -319,7 +311,6 @@ class Swiper extends Component {
         {/* Render screens */}
         {this.renderScrollView(children)}
         {this.renderFooter()}
-        {excludedChildren}
       </View>
     );
   }
