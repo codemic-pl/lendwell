@@ -1,18 +1,16 @@
 import { StyleSheet } from 'react-native';
-import { WINDOW_WIDTH, ACCENT_COLOR } from './Variables';
 
 export default StyleSheet.create({
-  itemsHolder: {
+  items: {
     flex: 1,
-    alignSelf: 'stretch',
     paddingHorizontal: 15,
-    paddingVertical: 24
-  },
-  noItemsHolder: {
-    flex: 1,
-    alignSelf: 'stretch',
-    padding: 15,
+    paddingVertical: 24,
+    paddingBottom: 32,
     alignItems: 'center'
+  },
+  container: {
+    alignSelf: 'stretch',
+    flex: 1
   },
   noItemsText: {
     paddingTop: 50,

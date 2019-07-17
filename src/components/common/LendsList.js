@@ -9,27 +9,29 @@ const LendsList = ({ lends, lendsType, noItemsText }) => {
       return renderNoItems();
     }
     return (
-      <ScrollView style={componentStyles.itemsHolder}>
-        {renderItems()}
+      <ScrollView style={componentStyles.container}>
+        <View style={componentStyles.items}>
+          {renderItems()}
+        </View>
       </ScrollView>
     );
   };
   const renderItems = () => {
-    return Object.entries(lends).map(([index, lend]) => {
-      return (
-        <LendsListItem
-          key={index}
-          type={lendsType}
-          lend={lend}
-        />
-      );
-    });
+    return Object.entries(lends).map(([index, lend]) => (
+      <LendsListItem
+        key={index}
+        type={lendsType}
+        lend={lend}
+      />
+    ));
   };
   const renderNoItems = () => {
     const noItems = noItemsText || 'No items.';
     return (
-      <View style={componentStyles.noItemsHolder}>
-        <Text style={componentStyles.noItemsText}>{noItems}</Text>
+      <View style={componentStyles.container}>
+        <View style={componentStyles.items}>
+          <Text style={componentStyles.noItemsText}>{noItems}</Text>
+        </View>
       </View>
     );
   };

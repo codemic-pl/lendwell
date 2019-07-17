@@ -5,27 +5,19 @@ import {
   View
 } from 'react-native';
 import { connect } from 'react-redux';
-import { Actions } from 'react-native-router-flux';
-import { NavBar, Swiper, SwiperPage, LendsList, Button } from './common';
+import { NavBar, Swiper, SwiperPage, LendsList } from './common';
 import * as actions from '../actions';
 import componentStyles from '../assets/styles/Lends';
 
 class Lends extends Component {
   onChangeList = (index) => {
-    console.log(this.props);
     this.props.setLendsSwiperUpdateIndex(index);
     // this.internals.swiperIndex = index;
   }
 
-  getActiveLends = () => {
-    const lends = this.props.lends || [];
-    return lends.filter((lend) => lend.status === 'active');
-  }
+  getActiveLends = () => this.props.lends.filter((lend) => lend.status === 'active');
 
-  getCompletedLends = () => {
-    const lends = this.props.lends || [];
-    return lends.filter((lend) => lend.status === 'completed');
-  }
+  getCompletedLends = () => this.props.lends.filter((lend) => lend.status === 'completed');
 
   scrollToCompletedLends = () => {
     this.refs.lendsSwiper.swipe();
@@ -33,10 +25,6 @@ class Lends extends Component {
 
   scrollToActiveLends = () => {
     this.refs.lendsSwiper.swipe(true);
-  }
-
-  initState(props) {
-    return props;
   }
 
   render() {
@@ -90,10 +78,6 @@ class Lends extends Component {
               lendsType="active"
               noItemsText="Brak aktywnych pożyczek"
             />
-            <Button
-              text="Bla bla bla"
-              onPress={() => { Actions.addLend(); }}
-            />
           </SwiperPage>
           <SwiperPage>
             <LendsList
@@ -120,8 +104,8 @@ const mapStateToProps = state => {
 
   return {
     firstLaunch,
-    swiperIndex,
-    lends
+    swiperIndex: swiperIndex || 0,
+    lends: lends || []
   };
 };
 

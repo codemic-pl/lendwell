@@ -10,6 +10,8 @@ const height = WINDOW_HEIGHT;
 class Swiper extends Component {
   // Props for ScrollView component
   static defaultProps = {
+    // Container swiper style
+    containerStyle: null,
     // Arrange screens horizontally
     horizontal: true,
     // Scroll exactly to the next screen, instead of continous scrolling
@@ -44,8 +46,8 @@ class Swiper extends Component {
    * @param {object} e native event
    */
   onScrollBegin = e => {
-    // Update internal isScrolling state
     console.log(e);
+    // Update internal isScrolling state
     this.internals.isScrolling = true;
   }
 
@@ -71,13 +73,14 @@ class Swiper extends Component {
    */
   onScrollEndDrag = e => {
     const { contentOffset: { x: newOffset } } = e.nativeEvent;
-    const { children } = this.props;
+    const { children } = this.state;
     const { index } = this.state;
     const { offset } = this.internals;
 
     // Update internal isScrolling state
     // if swiped right on the last slide
     // or left on the first one
+
     if (offset === newOffset &&
       (index === 0 || index === children.length - 1)) {
       this.internals.isScrolling = false;
@@ -96,19 +99,28 @@ class Swiper extends Component {
    * Initialize the state
    */
   initState(props) {
+    // exclude screens if needed (for eg. absolute positioned buttons)
+    const children = props.children ?
+      props.children.filter(child => !child.props.excludeSwiper) : [];
+    // Get just excluded children
+    const excludedChildren = props.children ?
+      props.children.filter(child => child.props.excludeSwiper) : [];
     // Get the total number of slides passed as children
-    const total = props.children ? props.children.length || 1 : 0;
+    const total = children ? children.length || 1 : 0;
       // Current index
     const index = total > 1 ? Math.min(props.index, total - 1) : 0;
       // Current offset
     const offset = width * index;
 
     const state = {
+      children,
+      excludedChildren,
       total,
       index,
       offset,
       width,
       height,
+      containerStyle: props.containerStyle,
       onLastSlide: props.onLastSlide,
       onUpdateIndex: props.onUpdateIndex
     };
@@ -133,7 +145,6 @@ class Swiper extends Component {
     const step = state.width;
     let index = state.index;
 
-    console.log(diff);
     // Do nothing if offset didn't change
     if (!diff) {
       return;
@@ -296,12 +307,19 @@ class Swiper extends Component {
   /**
    * Render the component
    */
-  render = ({ children } = this.props) => {
+  render = ({ children, excludedChildren, containerStyle } = this.state) => {
     return (
-      <View style={[componentStyles.container, componentStyles.fullScreen]}>
+      <View
+        style={[
+          componentStyles.container,
+          componentStyles.fullScreen,
+          (containerStyle || {})
+        ]}
+      >
         {/* Render screens */}
         {this.renderScrollView(children)}
         {this.renderFooter()}
+        {excludedChildren}
       </View>
     );
   }
