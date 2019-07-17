@@ -22,8 +22,10 @@ class Onboarding extends Component {
       StatusBar.setBarStyle('light-content');
     }
   }
+  
   render() {
     const closeOnboarding = function () {
+      this.props.setFirstAppLaunch(false);
       Actions.lends();
     };
     return (
@@ -32,7 +34,7 @@ class Onboarding extends Component {
         style={[onboardingStyles.gradient]}
       >
         <SafeAreaView style={{ flex: 1 }}>
-          <Swiper onLastSlide={closeOnboarding}>
+          <Swiper onLastSlide={closeOnboarding.bind(this)}>
             <SwiperPage customStyle={onboardingStyles.slide}>
               <AppIcon
                 name="OnboardingLend"
