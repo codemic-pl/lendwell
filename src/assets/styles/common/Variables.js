@@ -21,3 +21,5 @@ export const ACCENT_LINEAR_END = '#33a476';
 
 export const ACTIVE_LEND_COLOR = '#f5a623';
 export const ACTIVE_LEND_DARK_COLOR = '#e0961f';
+
+export const ACCENT_COLOR_RGB_VALUES = '65, 183, 121';

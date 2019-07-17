@@ -7,3 +7,4 @@ export * from './LendsListItem';
 export * from './NavBar';
 export * from './Swiper';
 export * from './SwiperPage';
+export * from './TabIcon';
