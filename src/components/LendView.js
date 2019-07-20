@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {
-  Alert,
   ScrollView,
   Share,
   View
@@ -13,6 +12,7 @@ import {
   NavBar,
   LendDetail
 } from './common';
+import { AlertHelper } from '../helpers/AlertHelper';
 import * as actions from '../actions';
 import componentStyles from '../assets/styles/LendView';
 import {
@@ -25,14 +25,8 @@ class LendView extends Component {
     if (!this.props || !this.props.lendId ||
         !this.props.lends || !this.props.lends.length ||
         !this.getLend(this.props.lendId)) {
-      Alert.alert(
-        'Błąd!',
-        'Błąd podczas ładowania pożyczki, spróbuj ponownie.',
-        [
-          { text: 'OK', onPress: () => Actions.pop() },
-        ],
-        { cancelable: false },
-      );
+      AlertHelper.show('error', 'Błąd', 'Błąd podczas ładowania pożyczki');
+      Actions.pop();
       return false;
     }
   }
@@ -51,11 +45,17 @@ class LendView extends Component {
   }
 
   async onPressRemind() {
+    let { remindTemplateText } = this.props;
+    const { lendId } = this.props;
+    const lend = this.getLend(lendId);
+    remindTemplateText = remindTemplateText
+      .replace(/{{osoba}}/g, lend.person)
+      .replace(/{{rzecz}}/g, lend.name)
+      .replace(/{{datapozyczki}}/g, this.formatDate(lend.createdDate))
+      .replace(/{{datazwrotu}}/g, this.formatDate(lend.deadlineDate));
     try {
       const result = await Share.share({
-        // TODO: CHANGE TEXT WHEN WILL BE AVAILABLE AT STORAGE
-        message:
-          'Lorem ipsum',
+        message: remindTemplateText,
       });
 
       if (result.action === Share.sharedAction) {
@@ -68,14 +68,7 @@ class LendView extends Component {
         // dismissed
       }
     } catch (error) {
-      Alert.alert(
-        'Błąd!',
-        error.message,
-        [
-          { text: 'OK', onPress: () => Actions.pop() },
-        ],
-        { cancelable: false },
-      );
+      AlertHelper.show('error', 'Błąd', error.message);
       return false;
     }
   }
@@ -297,7 +290,12 @@ const mapStateToProps = state => {
     editableLend
   } = state.lends;
 
+  const {
+    remindTemplateText
+  } = state.defaults;
+
   return {
+    remindTemplateText,
     lends,
     editableLend
   };

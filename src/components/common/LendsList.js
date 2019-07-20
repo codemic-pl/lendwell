@@ -26,7 +26,7 @@ const LendsList = ({ lends, lendsType, noItemsText }) => {
     ));
   };
   const renderNoItems = () => {
-    const noItems = noItemsText || 'No items.';
+    const noItems = noItemsText || 'Brak pożyczek.';
     return (
       <View style={componentStyles.container}>
         <View style={componentStyles.items}>
