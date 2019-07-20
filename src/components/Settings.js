@@ -29,7 +29,7 @@ class Settings extends Component {
       <View style={componentStyles.container}>
         <View style={componentStyles.settingsList}>
           <TouchableOpacity
-            onPress={() => { Actions.settingsRemindLend(); }}
+            onPress={() => { Actions.settingsRemindTemplate(); }}
             style={componentStyles.settingsListItem}
           >
             <Text style={componentStyles.settingsListItemLabel}>Szablon przypomnienia</Text>

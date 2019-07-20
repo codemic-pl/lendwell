@@ -9,6 +9,7 @@ import LendView from '../components/LendView';
 import AddLend from '../components/AddLend';
 import EditLend from '../components/EditLend';
 import Settings from '../components/Settings';
+import SettingsRemindTemplate from '../components/SettingsRemindTemplate';
 import { TabBar, TabIcon, NavBar } from '../components/common/';
 import TabBarStyles from '../assets/styles/common/TabBar';
 import {
@@ -98,6 +99,11 @@ class RouterComponent extends Component {
             key="addLend"
             title="Dodaj pożyczkę"
             component={AddLend}
+          />
+          <Scene
+            key="settingsRemindTemplate"
+            title="Szablon przypomnienia"
+            component={SettingsRemindTemplate}
           />
         </Stack>
       </Router>
