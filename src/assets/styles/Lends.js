@@ -15,6 +15,7 @@ export default StyleSheet.create({
     backgroundColor: '#FFFFFF',
     marginHorizontal: 15,
     marginTop: -32,
+    elevation: 24,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
