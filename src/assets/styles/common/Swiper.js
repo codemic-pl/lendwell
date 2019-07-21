@@ -15,9 +15,7 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'transparent',
-    position: 'absolute',
-    left: 0,
-    bottom: 64
+    left: 0
   },
   dot: {
     backgroundColor: '#ffffff',
@@ -34,7 +32,7 @@ export default StyleSheet.create({
   footer: {
     backgroundColor: 'transparent',
     position: 'absolute',
-    bottom: 0,
+    bottom: 40,
     left: 74,
     right: 15,
     flexDirection: 'row',
@@ -46,9 +44,7 @@ export default StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    position: 'absolute',
-    right: 0,
-    bottom: 40
+    right: 0
   },
   buttonContinue: {
     backgroundColor: ACCENT_COLOR,
