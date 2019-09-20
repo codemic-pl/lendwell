@@ -14,6 +14,7 @@ export default StyleSheet.create({
     textTransform: 'uppercase'
   },
   input: {
+    textAlignVertical: 'top',
     color: TEXT_COLOR,
     flex: 1,
     fontSize: 15,
@@ -26,7 +27,6 @@ export default StyleSheet.create({
     paddingRight: 24
   },
   inputContainer: {
-    textAlignVertical: 'center',
     borderRadius: 8,
     borderWidth: 1,
     borderColor: GRAY_COLOR
