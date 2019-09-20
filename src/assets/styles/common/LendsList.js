@@ -5,7 +5,8 @@ export default StyleSheet.create({
     flex: 1,
     paddingHorizontal: 15,
     paddingVertical: 24,
-    paddingBottom: 32,
+    // paddingBottom: 32, // when tabbar is relative
+    paddingBottom: 128, // when tabbar is absolute
     alignItems: 'center'
   },
   container: {

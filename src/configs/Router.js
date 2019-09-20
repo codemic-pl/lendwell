@@ -45,6 +45,7 @@ class RouterComponent extends Component {
             tabs
             tabBarComponent={TabBar}
             tabBarStyle={TabBarStyles.tabBar}
+            tabBarBackgroundStyle={TabBarStyles.tabBarBackground}
             tabStyle={TabBarStyles.tab}
             addLendButtonStyle={TabBarStyles.addLendButton}
             labelStyle={TabBarStyles.label}

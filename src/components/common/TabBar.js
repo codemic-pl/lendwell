@@ -71,6 +71,11 @@ class TabBar extends React.Component {
           state.style
         ]}
       >
+        <View
+          style={[
+            state.tabBarBackgroundStyle
+          ]}
+        />
         <SafeAreaView
           style={{
             flexDirection: 'row',

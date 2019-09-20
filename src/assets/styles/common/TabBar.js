@@ -3,8 +3,18 @@ import { ACCENT_LIGHT_COLOR, WINDOW_WIDTH } from './Variables';
 
 export default StyleSheet.create({
   tabBar: {
-    backgroundColor: ACCENT_LIGHT_COLOR,
+    position: 'absolute',
+    width: WINDOW_WIDTH,
     height: 'auto',
+    bottom: 0
+  },
+  tabBarBackground: {
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: ACCENT_LIGHT_COLOR
   },
   tab: {
     height: 64,
