@@ -12,7 +12,7 @@ import {
 } from './common';
 import { AlertHelper } from '../helpers/AlertHelper';
 import * as actions from '../actions';
-import componentStyles from '../assets/styles/AddLend';
+import componentStyles from '../assets/styles/SettingsRemindTemplate';
 
 class SettingsRemindTemplate extends Component {
   constructor(props) {
@@ -27,6 +27,7 @@ class SettingsRemindTemplate extends Component {
   onRemindSave() {
     if (!this.state || !this.state.remindTemplate) {
       AlertHelper.show('error', 'Błąd', 'Szablon nie może być pusty.');
+      return false;
     }
     this.props.setRemindTemplateText(this.state.remindTemplate);
     AlertHelper.show('success', 'Sukces', 'Szablon został zapisany.');
@@ -55,25 +56,29 @@ class SettingsRemindTemplate extends Component {
           <Text style={[componentStyles.subtitle]}>
             Kliknij w poniższy przycisk, aby wstawić zmienną w treść.
           </Text>
-          <View class={[componentStyles.variables]}>
+          <View style={[componentStyles.variables]}>
             <Button
               text="Osoba (pożyczkobiorca)"
-              buttonStyle={componentStyles.button}
+              buttonStyle={componentStyles.variableButton}
+              textStyle={componentStyles.variableText}
               onPress={this.onVariablePress.bind(this, '{{osoba}}')}
             />
             <Button
               text="Rzecz (pożyczka)"
-              buttonStyle={componentStyles.button}
+              buttonStyle={componentStyles.variableButton}
+              textStyle={componentStyles.variableText}
               onPress={this.onVariablePress.bind(this, '{{rzecz}}')}
             />
             <Button
               text="Data pożyczki"
-              buttonStyle={componentStyles.button}
+              buttonStyle={componentStyles.variableButton}
+              textStyle={componentStyles.variableText}
               onPress={this.onVariablePress.bind(this, '{{datapozyczki}}')}
             />
             <Button
               text="Planowana data zwrotu"
-              buttonStyle={componentStyles.button}
+              buttonStyle={componentStyles.variableButton}
+              textStyle={componentStyles.variableText}
               onPress={this.onVariablePress.bind(this, '{{datazwrotu}}')}
             />
           </View>
@@ -85,6 +90,7 @@ class SettingsRemindTemplate extends Component {
           />
           <Button
             text="Zapisz"
+            buttonStyle={componentStyles.button}
             onPress={this.onRemindSave.bind(this)}
           />
         </ScrollView>
