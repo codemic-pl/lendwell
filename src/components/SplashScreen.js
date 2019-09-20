@@ -18,7 +18,7 @@ class SplashScreen extends Component {
     const data = await this.performTimeConsumingTask();
     StatusBar.setHidden(false);
     if (Platform.OS === 'android') {
-      StatusBar.setBackgroundColor('transparent');
+      StatusBar.setBackgroundColor(ACCENT_LINEAR_START);
     } else {
       StatusBar.setBarStyle('light-content');
     }
@@ -31,7 +31,7 @@ class SplashScreen extends Component {
       }
     }
   }
-  
+
   performTimeConsumingTask = async() => {
     return new Promise((resolve) => {
       setTimeout(() => {
