@@ -10,6 +10,10 @@ import * as actions from '../actions';
 import componentStyles from '../assets/styles/Lends';
 
 class Lends extends Component {
+  componentWillMount() {
+    this.onChangeList(0);
+  }
+
   onChangeList = (index) => {
     this.props.setLendsSwiperUpdateIndex(index);
     // this.internals.swiperIndex = index;
