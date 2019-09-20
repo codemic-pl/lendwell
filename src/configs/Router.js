@@ -9,6 +9,7 @@ import LendView from '../components/LendView';
 import AddLend from '../components/AddLend';
 import EditLend from '../components/EditLend';
 import Settings from '../components/Settings';
+import SplashScreen from '../components/SplashScreen';
 import SettingsRemindTemplate from '../components/SettingsRemindTemplate';
 import { TabBar, TabIcon, NavBar } from '../components/common/';
 import TabBarStyles from '../assets/styles/common/TabBar';
@@ -29,8 +30,13 @@ class RouterComponent extends Component {
           headerLayoutPreset="center"
         >
           <Scene
+            key="splashScreen"
+            hideNavBar
+            component={SplashScreen}
+            initial
+          />
+          <Scene
             key="tutorial"
-            initial={this.props.firstLaunch}
           >
             <Scene
               key="onboarding"
@@ -41,7 +47,6 @@ class RouterComponent extends Component {
           </Scene>
           <Scene
             key="home"
-            initial={!this.props.firstLaunch}
             tabs
             tabBarComponent={TabBar}
             tabBarStyle={TabBarStyles.tabBar}
@@ -112,14 +117,8 @@ class RouterComponent extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  const {
-    firstLaunch
-  } = state.defaults;
-
-  return {
-    firstLaunch
-  };
+const mapStateToProps = () => {
+  return {};
 };
 
 export default connect(mapStateToProps, actions)(RouterComponent);

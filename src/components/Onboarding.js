@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import {
   Text,
-  SafeAreaView,
-  StatusBar,
-  Platform
+  SafeAreaView
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { connect } from 'react-redux';
@@ -14,15 +12,6 @@ import { ACCENT_LINEAR_START, ACCENT_LINEAR_END } from '../assets/styles/common/
 import onboardingStyles from '../assets/styles/Onboarding';
 
 class Onboarding extends Component {
-  componentDidMount() {
-    StatusBar.setHidden(false);
-    if (Platform.OS === 'android') {
-      StatusBar.setBackgroundColor('transparent');
-    } else {
-      StatusBar.setBarStyle('light-content');
-    }
-  }
-  
   render() {
     const closeOnboarding = function () {
       this.props.setFirstAppLaunch(false);
