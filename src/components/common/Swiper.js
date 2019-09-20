@@ -45,8 +45,7 @@ class Swiper extends Component {
    * Scroll begin handler
    * @param {object} e native event
    */
-  onScrollBegin = e => {
-    console.log(e);
+  onScrollBegin = () => {
     // Update internal isScrolling state
     this.internals.isScrolling = true;
   }
