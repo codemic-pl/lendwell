@@ -7,6 +7,7 @@ import {
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { DatePickerDialog } from 'react-native-datepicker-dialog';
+import { AlertHelper } from '../helpers/AlertHelper';
 import {
   Button,
   Input,
@@ -51,6 +52,10 @@ class EditLend extends Component {
   onPressEdit() {
     const { editableLend, lends, editLend } = this.props;
     if (editableLend) {
+      if (!editableLend.name || !editableLend.person) {
+        AlertHelper.show('error', 'Błąd', 'Wszystkie pola są wymagane.');
+        return false;
+      }
       editLend({
         lends,
         lend: editableLend
@@ -88,10 +93,7 @@ class EditLend extends Component {
   getDateYMD(someDate) {
     const date = someDate || new Date();
     const Y = new Date(date).getFullYear();
-    let M = new Date(date).getMonth() + 1;
-    if (M < 10) {
-      M = `0${M}`;
-    }
+    const M = new Date(date).getMonth() + 1;
     const D = new Date(date).getDate();
     return `${Y}-${M}-${D}`;
   }

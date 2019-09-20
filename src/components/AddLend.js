@@ -6,6 +6,7 @@ import {
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { DatePickerDialog } from 'react-native-datepicker-dialog';
+import { AlertHelper } from '../helpers/AlertHelper';
 import {
   Button,
   Input,
@@ -30,6 +31,10 @@ class AddLend extends Component {
 
   onPressAdd() {
     const { editableLend } = this.props;
+    if (!editableLend.name || !editableLend.person) {
+      AlertHelper.show('error', 'Błąd', 'Wszystkie pola są wymagane.');
+      return false;
+    }
     if (editableLend) {
       this.props.addLend(editableLend);
       Actions.pop();
