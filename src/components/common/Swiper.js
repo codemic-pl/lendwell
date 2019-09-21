@@ -31,11 +31,11 @@ class Swiper extends Component {
     index: 0,
     // On last slide button click
     onLastSlide() {
-      console.log('The end of swiper');
+      // console.log('The end of swiper');
     },
     // On update index
     onUpdateIndex(index) {
-      console.log(`Index Updated ${index}`);
+      // console.log(`Index Updated ${index}`);
     }
   };
 
