@@ -7,17 +7,7 @@ import {
   ADD_LEND,
   EDIT_LEND
 } from './types';
-
-const getDateYMD = (someDate) => {
-  const date = someDate || new Date();
-  const Y = new Date(date).getFullYear();
-  let M = new Date(date).getMonth() + 1;
-  if (M < 10) {
-    M = `0${M}`;
-  }
-  const D = new Date(date).getDate();
-  return `${Y}-${M}-${D}`;
-};
+import { getDateYMD } from '../utils/mixins';
 
 export const setLendsSwiperUpdateIndex = (index) => {
   return {

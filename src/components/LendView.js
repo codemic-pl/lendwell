@@ -13,6 +13,7 @@ import {
   LendDetail
 } from './common';
 import { AlertHelper } from '../helpers/AlertHelper';
+import { getDateYMD, formatDate } from '../utils/mixins';
 import * as actions from '../actions';
 import componentStyles from '../assets/styles/LendView';
 import {
@@ -51,8 +52,8 @@ class LendView extends Component {
     remindTemplateText = remindTemplateText
       .replace(/{{osoba}}/g, lend.person)
       .replace(/{{rzecz}}/g, lend.name)
-      .replace(/{{datapozyczki}}/g, this.formatDate(lend.createdDate))
-      .replace(/{{datazwrotu}}/g, this.formatDate(lend.deadlineDate));
+      .replace(/{{datapozyczki}}/g, formatDate(lend.createdDate))
+      .replace(/{{datazwrotu}}/g, formatDate(lend.deadlineDate));
     try {
       const result = await Share.share({
         message: remindTemplateText,
@@ -85,29 +86,14 @@ class LendView extends Component {
     }
     return this.props.lends.find((lend) => lend.id === id);
   }
-
-  getDateYMD(someDate) {
-    const date = someDate || new Date();
-    const Y = new Date(date).getFullYear();
-    let M = new Date(date).getMonth() + 1;
-    if (M < 10) {
-      M = `0${M}`;
-    }
-    const D = new Date(date).getDate();
-    return `${Y}-${M}-${D}`;
-  }
   getRemindTime() {
     // TODO: get remind time
     return '5 dni przed planowaną datą zwrotu';
   }
   getRealReturnDate() {
     const lend = { ...this.getLend(this.props.lendId) };
-    return `${this.formatDate(lend.returnDate)} \
+    return `${formatDate(lend.returnDate)} \
 ${this.renderReturnInDays(lend.returnDate, lend.deadlineDate)}`;
-  }
-  formatDate(someDate) {
-    const date = someDate || new Date();
-    return new Date(date).toLocaleDateString('pl-PL');
   }
   isToday(someDate) {
     if (!someDate) {
@@ -123,7 +109,7 @@ ${this.renderReturnInDays(lend.returnDate, lend.deadlineDate)}`;
     if (this.isToday(deadlineDate)) {
       return 0;
     }
-    let daysCount = ((new Date(deadlineDate) - new Date(this.getDateYMD(returnDate))) /
+    let daysCount = ((new Date(deadlineDate) - new Date(getDateYMD(returnDate))) /
                     (1000 * 60 * 60 * 24));
     if (daysCount < 0) {
       daysCount = Math.ceil(daysCount * -1) * -1;
@@ -243,7 +229,7 @@ ${this.renderReturnInDays(lend.returnDate, lend.deadlineDate)}`;
         <ScrollView style={[componentStyles.details]}>
           <LendDetail
             label='Data pożyczki'
-            text={this.formatDate(lend.createdDate)}
+            text={formatDate(lend.createdDate)}
           />
           <LendDetail
             label='Co pożyczyłeś/aś?'
@@ -259,7 +245,7 @@ ${this.renderReturnInDays(lend.returnDate, lend.deadlineDate)}`;
           />
           <LendDetail
             label='Planowana data zwrotu'
-            text={this.formatDate(lend.deadlineDate)}
+            text={formatDate(lend.deadlineDate)}
           />
           {this.renderRealReturnDate()}
           {this.renderRemindTime()}

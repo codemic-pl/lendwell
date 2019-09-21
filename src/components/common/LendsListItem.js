@@ -8,24 +8,10 @@ import {
   ACTIVE_LEND_DARK_COLOR,
   LIGHT_GRAY_COLOR
 } from '../../assets/styles/common/Variables';
+import { getDateYMD, formatDate } from '../../utils/mixins';
 
 const LendsListItem = ({ lend, type }) => {
   const lendsType = (type === 'completed' ? ACCENT_VERY_DARK_COLOR : ACTIVE_LEND_DARK_COLOR);
-  const formatDate = (someDate) => {
-    const date = someDate || new Date();
-    return new Date(date).toLocaleDateString('pl-PL');
-  };
-
-  const getDateYMD = (someDate) => {
-    const date = someDate || new Date();
-    const Y = new Date(date).getFullYear();
-    let M = new Date(date).getMonth() + 1;
-    if (M < 10) {
-      M = `0${M}`;
-    }
-    const D = new Date(date).getDate();
-    return `${Y}-${M}-${D}`;
-  };
 
   const isToday = (someDate) => {
     if (!someDate) {

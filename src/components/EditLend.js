@@ -13,6 +13,7 @@ import {
   Input,
   NavBar,
 } from './common';
+import { getDateYMD, formatDate } from '../utils/mixins';
 import * as actions from '../actions';
 import componentStyles from '../assets/styles/EditLend';
 
@@ -83,19 +84,11 @@ class EditLend extends Component {
     const { setEditableLend, editableLend } = this.props;
     let changedDate = date;
     if (typeof (date) !== 'string') {
-      changedDate = this.getDateYMD(date);
+      changedDate = getDateYMD(date);
     }
     setEditableLend(editableLend, {
       deadlineDate: changedDate
     });
-  }
-
-  getDateYMD(someDate) {
-    const date = someDate || new Date();
-    const Y = new Date(date).getFullYear();
-    const M = new Date(date).getMonth() + 1;
-    const D = new Date(date).getDate();
-    return `${Y}-${M}-${D}`;
   }
 
   getLend(id) {
@@ -154,7 +147,7 @@ class EditLend extends Component {
             label="Data planowanego zwrotu"
             disabled
             onDisabledClick={this.onDeadlineDateSelect.bind(this)}
-            value={this.formatDate(editableLend.deadlineDate)}
+            value={formatDate(editableLend.deadlineDate)}
             onChangeText={this.onDeadlineDateChanged.bind(this)}
           />
           {/* TODO: Add remind time */}
