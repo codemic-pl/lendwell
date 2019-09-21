@@ -1,4 +1,4 @@
-package com.lendwell;
+package pl.codemic.lendwell;
 
 import com.facebook.react.ReactActivity;
 
