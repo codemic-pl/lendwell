@@ -25,9 +25,9 @@ class SplashScreen extends Component {
 
     if (data !== null) {
       if (this.props.firstLaunch) {
-        Actions.tutorial();
+        Actions.replace('tutorial');
       } else {
-        Actions.lends();
+        Actions.replace('lends');
       }
     }
   }
