@@ -47,7 +47,7 @@ class Onboarding extends Component {
               />
               <Text style={[onboardingStyles.heading]}>Zapisuj</Text>
               <Text style={[onboardingStyles.description]}>
-                Zapisuj co i o jakiej wartości pożyczyłeś/aś.
+                Zapisuj co i na jaki czas pożyczyłeś/aś.
               </Text>
             </SwiperPage>
             <SwiperPage customStyle={onboardingStyles.slide}>
@@ -60,7 +60,7 @@ class Onboarding extends Component {
               />
               <Text style={[onboardingStyles.heading]}>Przypominaj</Text>
               <Text style={[onboardingStyles.description]}>
-                Przypominaj o pożyczce za pomocą powiadomień PUSH bądź wiadomości SMS.
+                Szybko i łatwo, przypominaj o pożyczce.
               </Text>
             </SwiperPage>
           </Swiper>
