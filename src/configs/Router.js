@@ -19,9 +19,13 @@ import {
 } from '../assets/styles/common/Variables';
 
 class RouterComponent extends Component {
+  onBackPress() {
+    return false;
+  }
+
   render() {
     return (
-      <Router>
+      <Router backAndroidHandler={this.onBackPress}>
         <Stack
           key="root"
           hideNavBar
