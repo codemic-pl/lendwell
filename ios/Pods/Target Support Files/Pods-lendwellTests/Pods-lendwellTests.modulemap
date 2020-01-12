@@ -1,0 +1,6 @@
+framework module Pods_lendwellTests {
+  umbrella header "Pods-lendwellTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

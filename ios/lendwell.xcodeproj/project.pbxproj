@@ -14,6 +14,7 @@
 		00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302E41ABCB9EE00DB3ED1 /* libRCTVibration.a */; };
 		00E356F31AD99517003FC87E /* lendwellTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* lendwellTests.m */; };
 		11D1A2F320CAFA9E000508D9 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
+		1236B7B0ABFD213A46BB944D /* Pods_lendwell.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 742E964A68B0827D2DC92114 /* Pods_lendwell.framework */; };
 		133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
 		139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139105C11AF99BAD00B5F7CC /* libRCTSettings.a */; };
 		139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139FDEF41B06529B00C62182 /* libRCTWebSocket.a */; };
@@ -41,10 +42,15 @@
 		757229C867A94E41A8BDF5FF /* oxygen.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1330D55F0AF7468DA34316E2 /* oxygen.ttf */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		90F613DB3D1F4FAEB136B424 /* oxygen-bold-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0EC3DC9DDE6342608B66C45D /* oxygen-bold-webfont.ttf */; };
+		9D0D058523CB7B3900C447A2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9D0D058423CB7B3900C447A2 /* GoogleService-Info.plist */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		B1DA192824264D0FB99EBBE3 /* libBVLinearGradient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22058AF641024561839A7039 /* libBVLinearGradient.a */; };
 		B3E4962F25FB41CB944CE9D9 /* oxygen-bolditalic-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9D9D92A36A5B44DE88D1DD72 /* oxygen-bolditalic-webfont.ttf */; };
+		C011101FA1274822BCA37ACA /* libRNFirebase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F4FBC8B033E84DD18B801DE5 /* libRNFirebase.a */; };
+		D4B90FCF0BBD74F0EEC0E87E /* Pods_lendwellTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C46EA019C2B8CE22CED3123 /* Pods_lendwellTests.framework */; };
+		E7F9CD86CB1D96DB7C2AF56E /* Pods_lendwell_tvOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F5C8C8BE45B5B5DD936D069 /* Pods_lendwell_tvOSTests.framework */; };
 		EAB44A23194B4518811029B2 /* libRNSVG-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 55631D96954C4FF9BCEE7776 /* libRNSVG-tvOS.a */; };
+		ECCC7260BADC7872DFD221A8 /* Pods_lendwell_tvOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 210F97BB511C3AD78D9BCA9D /* Pods_lendwell_tvOS.framework */; };
 		ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
 		ED2971652150620600B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED2971642150620600B7C4FE /* JavaScriptCore.framework */; };
 		EF41E9CB57E448B686D9AA98 /* oxygen-italic-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B479742BE3744FE0B8BDEDA5 /* oxygen-italic-webfont.ttf */; };
@@ -289,6 +295,13 @@
 			remoteGlobalIDString = 58B5119B1A9E6C1200147676;
 			remoteInfo = RCTText;
 		};
+		9D0D058223CB6CB900C447A2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 536006F525604CB2B62FBCD8 /* RNFirebase.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RNFirebase;
+		};
 		9DE0F4F5227DC75200BDA945 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
@@ -376,23 +389,38 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = lendwell/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = lendwell/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
+		210F97BB511C3AD78D9BCA9D /* Pods_lendwell_tvOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lendwell_tvOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		22058AF641024561839A7039 /* libBVLinearGradient.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libBVLinearGradient.a; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* lendwell-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "lendwell-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* lendwell-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "lendwell-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D87EB79D987E7EE272596D7 /* Pods-lendwell-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lendwell-tvOS.release.xcconfig"; path = "Target Support Files/Pods-lendwell-tvOS/Pods-lendwell-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		5213EE23645FC69D85EAF354 /* Pods-lendwell-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lendwell-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-lendwell-tvOS/Pods-lendwell-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		536006F525604CB2B62FBCD8 /* RNFirebase.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNFirebase.xcodeproj; path = "../node_modules/react-native-firebase/ios/RNFirebase.xcodeproj"; sourceTree = "<group>"; };
 		55631D96954C4FF9BCEE7776 /* libRNSVG-tvOS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = "libRNSVG-tvOS.a"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		61C2ACBE1546416594A6878D /* oxygen-webfont.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "oxygen-webfont.ttf"; path = "../src/assets/fonts/oxygen-webfont.ttf"; sourceTree = "<group>"; };
+		6946F49A8199D98653CA0753 /* Pods-lendwellTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lendwellTests.release.xcconfig"; path = "Target Support Files/Pods-lendwellTests/Pods-lendwellTests.release.xcconfig"; sourceTree = "<group>"; };
 		6DFF32BAF9BB469189ED287D /* RNSVG.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNSVG.xcodeproj; path = "../node_modules/react-native-svg/ios/RNSVG.xcodeproj"; sourceTree = "<group>"; };
+		742E964A68B0827D2DC92114 /* Pods_lendwell.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lendwell.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
+		7D89092E9E118AB23D0C3FC5 /* Pods-lendwell-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lendwell-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-lendwell-tvOSTests/Pods-lendwell-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		7F5C8C8BE45B5B5DD936D069 /* Pods_lendwell_tvOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lendwell_tvOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		859488DF16F740B4A5DC0ED5 /* libRNSVG.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNSVG.a; sourceTree = "<group>"; };
+		9C46EA019C2B8CE22CED3123 /* Pods_lendwellTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lendwellTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D0D058423CB7B3900C447A2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9D9D92A36A5B44DE88D1DD72 /* oxygen-bolditalic-webfont.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "oxygen-bolditalic-webfont.ttf"; path = "../src/assets/fonts/oxygen-bolditalic-webfont.ttf"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		B2FD59290EEA46E284CA8137 /* BVLinearGradient.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = BVLinearGradient.xcodeproj; path = "../node_modules/react-native-linear-gradient/BVLinearGradient.xcodeproj"; sourceTree = "<group>"; };
 		B479742BE3744FE0B8BDEDA5 /* oxygen-italic-webfont.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "oxygen-italic-webfont.ttf"; path = "../src/assets/fonts/oxygen-italic-webfont.ttf"; sourceTree = "<group>"; };
+		D2570F0FA64601A6868378B4 /* Pods-lendwell.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lendwell.debug.xcconfig"; path = "Target Support Files/Pods-lendwell/Pods-lendwell.debug.xcconfig"; sourceTree = "<group>"; };
+		D49ADEB8C9949E1945A0C82A /* Pods-lendwellTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lendwellTests.debug.xcconfig"; path = "Target Support Files/Pods-lendwellTests/Pods-lendwellTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
+		F21CE2DA9B995E615C466D2E /* Pods-lendwell.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lendwell.release.xcconfig"; path = "Target Support Files/Pods-lendwell/Pods-lendwell.release.xcconfig"; sourceTree = "<group>"; };
+		F4FBC8B033E84DD18B801DE5 /* libRNFirebase.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNFirebase.a; sourceTree = "<group>"; };
+		FFA3661EBAA84333F94C57DE /* Pods-lendwell-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lendwell-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-lendwell-tvOSTests/Pods-lendwell-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -401,6 +429,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */,
+				D4B90FCF0BBD74F0EEC0E87E /* Pods_lendwellTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,6 +452,8 @@
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				B1DA192824264D0FB99EBBE3 /* libBVLinearGradient.a in Frameworks */,
 				367EC86C34504D92BEDA2086 /* libRNSVG.a in Frameworks */,
+				C011101FA1274822BCA37ACA /* libRNFirebase.a in Frameworks */,
+				1236B7B0ABFD213A46BB944D /* Pods_lendwell.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,6 +471,7 @@
 				2D02E4C71E0B4AEC006451C7 /* libRCTText-tvOS.a in Frameworks */,
 				2D02E4C81E0B4AEC006451C7 /* libRCTWebSocket-tvOS.a in Frameworks */,
 				EAB44A23194B4518811029B2 /* libRNSVG-tvOS.a in Frameworks */,
+				ECCC7260BADC7872DFD221A8 /* Pods_lendwell_tvOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -448,6 +480,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */,
+				E7F9CD86CB1D96DB7C2AF56E /* Pods_lendwell_tvOSTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -570,12 +603,31 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		173DE3A3932AD3D1FDFEBF59 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D2570F0FA64601A6868378B4 /* Pods-lendwell.debug.xcconfig */,
+				F21CE2DA9B995E615C466D2E /* Pods-lendwell.release.xcconfig */,
+				7D89092E9E118AB23D0C3FC5 /* Pods-lendwell-tvOSTests.debug.xcconfig */,
+				FFA3661EBAA84333F94C57DE /* Pods-lendwell-tvOSTests.release.xcconfig */,
+				D49ADEB8C9949E1945A0C82A /* Pods-lendwellTests.debug.xcconfig */,
+				6946F49A8199D98653CA0753 /* Pods-lendwellTests.release.xcconfig */,
+				5213EE23645FC69D85EAF354 /* Pods-lendwell-tvOS.debug.xcconfig */,
+				3D87EB79D987E7EE272596D7 /* Pods-lendwell-tvOS.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
+				742E964A68B0827D2DC92114 /* Pods_lendwell.framework */,
+				7F5C8C8BE45B5B5DD936D069 /* Pods_lendwell_tvOSTests.framework */,
+				9C46EA019C2B8CE22CED3123 /* Pods_lendwellTests.framework */,
+				210F97BB511C3AD78D9BCA9D /* Pods_lendwell_tvOS.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -627,6 +679,7 @@
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				B2FD59290EEA46E284CA8137 /* BVLinearGradient.xcodeproj */,
 				6DFF32BAF9BB469189ED287D /* RNSVG.xcodeproj */,
+				536006F525604CB2B62FBCD8 /* RNFirebase.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -643,6 +696,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				9D0D058423CB7B3900C447A2 /* GoogleService-Info.plist */,
 				13B07FAE1A68108700A75B9A /* lendwell */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* lendwellTests */,
@@ -650,6 +704,7 @@
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				9DE0F4CF227DC74F00BDA945 /* Recovered References */,
 				81CDD3DD1C2C43C6846FF496 /* Resources */,
+				173DE3A3932AD3D1FDFEBF59 /* Pods */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -667,12 +722,21 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		9D0D057F23CB6CB800C447A2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9D0D058323CB6CB900C447A2 /* libRNFirebase.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		9DE0F4CF227DC74F00BDA945 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
 				22058AF641024561839A7039 /* libBVLinearGradient.a */,
 				859488DF16F740B4A5DC0ED5 /* libRNSVG.a */,
 				55631D96954C4FF9BCEE7776 /* libRNSVG-tvOS.a */,
+				F4FBC8B033E84DD18B801DE5 /* libRNFirebase.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -711,6 +775,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "lendwellTests" */;
 			buildPhases = (
+				9578FF59663740E1C13D69A1 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
@@ -729,10 +794,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "lendwell" */;
 			buildPhases = (
+				62AAFBC911D56A91B5532649 /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				B130AB18DEEBBA8743EEC133 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -747,6 +814,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "lendwell-tvOS" */;
 			buildPhases = (
+				6B549FAFCD47D9DB9239CCFD /* [CP] Check Pods Manifest.lock */,
 				2D02E4771E0B4A5D006451C7 /* Sources */,
 				2D02E4781E0B4A5D006451C7 /* Frameworks */,
 				2D02E4791E0B4A5D006451C7 /* Resources */,
@@ -765,6 +833,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "lendwell-tvOSTests" */;
 			buildPhases = (
+				2145049F314E032E9D2280C2 /* [CP] Check Pods Manifest.lock */,
 				2D02E48C1E0B4A5D006451C7 /* Sources */,
 				2D02E48D1E0B4A5D006451C7 /* Frameworks */,
 				2D02E48E1E0B4A5D006451C7 /* Resources */,
@@ -791,6 +860,9 @@
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
+					};
+					13B07F861A680F5B00A75B9A = {
+						ProvisioningStyle = Automatic;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -867,6 +939,10 @@
 				{
 					ProductGroup = 146834001AC3E56700842450 /* Products */;
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+				},
+				{
+					ProductGroup = 9D0D057F23CB6CB800C447A2 /* Products */;
+					ProjectRef = 536006F525604CB2B62FBCD8 /* RNFirebase.xcodeproj */;
 				},
 				{
 					ProductGroup = 9DE0F4FF227DC75200BDA945 /* Products */;
@@ -1108,6 +1184,13 @@
 			remoteRef = 832341B41AAA6A8300B99B32 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		9D0D058323CB6CB900C447A2 /* libRNFirebase.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNFirebase.a;
+			remoteRef = 9D0D058223CB6CB900C447A2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		9DE0F4F6227DC75200BDA945 /* libjsi.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1186,6 +1269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				9D0D058523CB7B3900C447A2 /* GoogleService-Info.plist in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				90F613DB3D1F4FAEB136B424 /* oxygen-bold-webfont.ttf in Resources */,
 				B3E4962F25FB41CB944CE9D9 /* oxygen-bolditalic-webfont.ttf in Resources */,
@@ -1227,6 +1311,28 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
+		2145049F314E032E9D2280C2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-lendwell-tvOSTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1240,6 +1346,92 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+		};
+		62AAFBC911D56A91B5532649 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-lendwell-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6B549FAFCD47D9DB9239CCFD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-lendwell-tvOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9578FF59663740E1C13D69A1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-lendwellTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B130AB18DEEBBA8743EEC133 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-lendwell/Pods-lendwell-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-lendwell/Pods-lendwell-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1308,6 +1500,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D49ADEB8C9949E1945A0C82A /* Pods-lendwellTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1318,12 +1511,17 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-svg/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 				);
 				INFOPLIST_FILE = lendwellTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
 				OTHER_LDFLAGS = (
+					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
@@ -1335,6 +1533,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6946F49A8199D98653CA0753 /* Pods-lendwellTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -1342,12 +1541,17 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-svg/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 				);
 				INFOPLIST_FILE = lendwellTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
 				OTHER_LDFLAGS = (
+					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
@@ -1359,6 +1563,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D2570F0FA64601A6868378B4 /* Pods-lendwell.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -1370,6 +1575,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-svg/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 				);
 				INFOPLIST_FILE = lendwell/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1387,6 +1593,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F21CE2DA9B995E615C466D2E /* Pods-lendwell.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -1397,6 +1604,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-svg/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 				);
 				INFOPLIST_FILE = lendwell/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1414,6 +1622,7 @@
 		};
 		2D02E4971E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5213EE23645FC69D85EAF354 /* Pods-lendwell-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1428,10 +1637,14 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-svg/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 				);
 				INFOPLIST_FILE = "lendwell-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1446,6 +1659,7 @@
 		};
 		2D02E4981E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3D87EB79D987E7EE272596D7 /* Pods-lendwell-tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1460,10 +1674,14 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-svg/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 				);
 				INFOPLIST_FILE = "lendwell-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1478,6 +1696,7 @@
 		};
 		2D02E4991E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7D89092E9E118AB23D0C3FC5 /* Pods-lendwell-tvOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1491,10 +1710,14 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-svg/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 				);
 				INFOPLIST_FILE = "lendwell-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1509,6 +1732,7 @@
 		};
 		2D02E49A1E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FFA3661EBAA84333F94C57DE /* Pods-lendwell-tvOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1522,10 +1746,14 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-svg/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 				);
 				INFOPLIST_FILE = "lendwell-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
