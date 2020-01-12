@@ -15,30 +15,40 @@ import {
 } from './common';
 import { getDateYMD, formatDate } from '../utils/mixins';
 import * as actions from '../actions';
-import componentStyles from '../assets/styles/EditLend';
+import componentStyles from '../assets/styles/LendForm';
 
-class EditLend extends Component {
+class LendForm extends Component {
+  constructor(props) {
+    super(props);
+    console.log({ that: this, props });
+    this.isEditingForm = props.routeName === 'editLend';
+  }
+
   componentDidMount() {
-    if (!this.props) {
-      return false;
-    }
-    const { setEditableLend, lends, lendId, newLendTemplate } = this.props;
-    const lend = this.getLend(lendId);
+    const { isEditingForm } = this;
+    if (isEditingForm) {
+      if (!this.props) {
+        return false;
+      }
+      const { setEditableLend, lends, lendId, newLendTemplate } = this.props;
+      const lend = this.getLend(lendId);
 
-    if (!lendId || !newLendTemplate ||
+      if (!lendId || !newLendTemplate ||
         !lends || !lends.length || !lend) {
-      Alert.alert(
-        'Błąd!',
-        'Błąd podczas ładowania pożyczki, spróbuj ponownie.',
-        [
-          { text: 'OK', onPress: () => Actions.pop() },
-        ],
-        { cancelable: false },
-      );
-      return false;
+        Alert.alert(
+          'Błąd!',
+          'Błąd podczas ładowania pożyczki, spróbuj ponownie.',
+          [
+            { text: 'OK', onPress: () => Actions.pop() },
+          ],
+          { cancelable: false },
+        );
+        return false;
+      }
+      setEditableLend(newLendTemplate, lend);
+    } else {
+      this.props.setEditableLend(this.props.newLendTemplate, {});
     }
-
-    setEditableLend(newLendTemplate, lend);
   }
 
   onDeadlineDateSelect() {
@@ -46,22 +56,27 @@ class EditLend extends Component {
     this.refs.deadlineDatePicker.open({
       minDate: new Date(editableLend.createdDate),
       date: new Date(editableLend.deadlineDate),
-      maxDate: new Date('2050-01-01')
+      maxDate: new Date('2100-01-01')
     });
   }
 
-  onPressEdit() {
-    const { editableLend, lends, editLend } = this.props;
+  onPressSubmit() {
+    const { isEditingForm } = this;
+    const { editableLend } = this.props;
     if (editableLend) {
       if (!editableLend.name || !editableLend.person) {
         AlertHelper.show('error', 'Błąd', 'Wszystkie pola są wymagane.');
         return false;
       }
-      editLend({
-        lends,
-        lend: editableLend
-      });
-
+      if (isEditingForm) {
+        const { lends, editLend } = this.props;
+        editLend({
+          lends,
+          lend: editableLend
+        });
+      } else {
+        this.props.addLend(editableLend);
+      }
       Actions.pop();
     }
   }
@@ -98,26 +113,23 @@ class EditLend extends Component {
     return this.props.lends.find((lend) => lend.id === id);
   }
 
-  formatDate(someDate) {
-    const date = someDate || new Date();
-    return new Date(date).toLocaleDateString('pl-PL');
-  }
-
   renderActionButtons() {
+    const { isEditingForm } = this;
     return (
       <View
         style={componentStyles.buttons}
       >
         <Button
-          text="Edytuj pożyczkę"
+          text={isEditingForm ? 'Edytuj pożyczkę' : 'Dodaj pożyczkę'}
           buttonStyle={componentStyles.button}
-          onPress={this.onPressEdit.bind(this)}
+          onPress={this.onPressSubmit.bind(this)}
         />
       </View>
     );
   }
 
   render() {
+    const { isEditingForm } = this;
     const { editableLend } = this.props;
 
     return (
@@ -125,7 +137,7 @@ class EditLend extends Component {
         style={[componentStyles.container]}
       >
         <NavBar
-          title="Edytuj pożyczkę"
+          title={isEditingForm ? 'Edytuj pożyczkę' : 'Dodaj pożyczkę'}
           backButton
         />
         <ScrollView style={[componentStyles.details]}>
@@ -176,4 +188,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, actions)(EditLend);
+export default connect(mapStateToProps, actions)(LendForm);

@@ -6,8 +6,7 @@ import Blank from '../components/Blank';
 import Onboarding from '../components/Onboarding';
 import Lends from '../components/Lends';
 import LendView from '../components/LendView';
-import AddLend from '../components/AddLend';
-import EditLend from '../components/EditLend';
+import LendForm from '../components/LendForm';
 import Settings from '../components/Settings';
 import SplashScreen from '../components/SplashScreen';
 import SettingsRemindTemplate from '../components/SettingsRemindTemplate';
@@ -99,12 +98,12 @@ class RouterComponent extends Component {
             key="editLend"
             title="Edytuj pożyczkę"
             path="/lend/:lendId/edit/"
-            component={EditLend}
+            component={LendForm}
           />
           <Scene
             key="addLend"
             title="Dodaj pożyczkę"
-            component={AddLend}
+            component={LendForm}
           />
           <Scene
             key="settingsRemindTemplate"
